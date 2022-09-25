@@ -1,3 +1,5 @@
+import { signIn, signOut, useSession } from "next-auth/react";
+
 import Head from "next/head";
 import Link from "next/link";
 import type { NextPage } from "next";
@@ -6,13 +8,23 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 
 const Home: NextPage = () => {
+  const { data: session } = useSession();
+
   const [thoughtText, setThoughtText] = useState(String);
   const [newThoughtId, setNewThoughtId] = useState(String);
   const thought = trpc.useMutation(["thought.createThought"]);
   const router = useRouter();
 
   const handleCreateThought = async () => {
-    const newThought = await thought.mutateAsync({ text: thoughtText });
+    console.log(session?.user);
+    if (!session?.user?.id) {
+      console.log("ffs");
+      return;
+    }
+    const newThought = await thought.mutateAsync({
+      text: thoughtText,
+      userId: session?.user?.id,
+    });
     if (newThought.id) {
       setNewThoughtId(newThought.id);
     }
@@ -25,6 +37,9 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="flex flex-col items-center justify-center min-h-screen p-4 gap-9">
+        {session ? (
+          <h1 className="text-4xl"> Hi, {session.user?.name}. How are you? </h1>
+        ) : null}
         <textarea
           className="w-1/3 h-96 font-semibold"
           value={thoughtText}
@@ -37,6 +52,23 @@ const Home: NextPage = () => {
         >
           Release your thought...
         </button>
+        <div>
+          {session ? (
+            <button
+              className="text-sky-400 hover:underline"
+              onClick={() => signOut()}
+            >
+              Sign Out
+            </button>
+          ) : (
+            <button
+              className="text-sky-400 hover:underline"
+              onClick={() => signIn()}
+            >
+              Sign In
+            </button>
+          )}
+        </div>
         {newThoughtId ? (
           <h1>
             Your thought is{" "}
