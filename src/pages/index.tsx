@@ -1,6 +1,7 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 
 import Head from "next/head";
+import Layout from "../components/Layout";
 import Link from "next/link";
 import type { NextPage } from "next";
 import { trpc } from "../utils/trpc";
@@ -35,50 +36,54 @@ const Home: NextPage = () => {
       <Head>
         <title>fuckthebirdapp</title>
       </Head>
-
-      <main className="flex flex-col items-center justify-center min-h-screen p-4 gap-9">
-        {session ? (
-          <h1 className="text-4xl"> Hi, {session.user?.name}. How are you? </h1>
-        ) : null}
-        <textarea
-          className="w-1/3 h-96 font-semibold"
-          value={thoughtText}
-          placeholder="What are you thinking about, bud?"
-          onChange={(e) => setThoughtText(e.target.value)}
-        ></textarea>
-        <button
-          className="text-white bg-blue-500 hover:bg-blue-400 p-4 rounded-md"
-          onClick={handleCreateThought}
-        >
-          Release your thought...
-        </button>
-        <div>
+      <Layout>
+        <div className="flex flex-col items-center justify-center min-h-screen w-full p-4 gap-9">
           {session ? (
-            <button
-              className="text-sky-400 hover:underline"
-              onClick={() => signOut()}
-            >
-              Sign Out
-            </button>
-          ) : (
-            <button
-              className="text-sky-400 hover:underline"
-              onClick={() => signIn()}
-            >
-              Sign In
-            </button>
-          )}
+            <h1 className="text-4xl">
+              {" "}
+              Hi, {session.user?.name}. How are you?{" "}
+            </h1>
+          ) : null}
+          <textarea
+            className="w-1/3 h-96 font-semibold"
+            value={thoughtText}
+            placeholder="What are you thinking about, bud?"
+            onChange={(e) => setThoughtText(e.target.value)}
+          ></textarea>
+          <button
+            className="text-white bg-blue-500 hover:bg-blue-400 p-4 rounded-md"
+            onClick={handleCreateThought}
+          >
+            Release your thought...
+          </button>
+          <div>
+            {session ? (
+              <button
+                className="text-sky-400 hover:underline"
+                onClick={() => signOut()}
+              >
+                Sign Out
+              </button>
+            ) : (
+              <button
+                className="text-sky-400 hover:underline"
+                onClick={() => signIn()}
+              >
+                Sign In
+              </button>
+            )}
+          </div>
+          {newThoughtId ? (
+            <h1>
+              Your thought is{" "}
+              <Link href={`/thought/${newThoughtId}`}>
+                <a className="text-sky-400 hover:underline">here</a>
+              </Link>
+              .
+            </h1>
+          ) : null}
         </div>
-        {newThoughtId ? (
-          <h1>
-            Your thought is{" "}
-            <Link href={`/thought/${newThoughtId}`}>
-              <a className="text-sky-400 hover:underline">here</a>
-            </Link>
-            .
-          </h1>
-        ) : null}
-      </main>
+      </Layout>
     </>
   );
 };
