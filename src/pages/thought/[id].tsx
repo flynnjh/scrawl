@@ -5,6 +5,7 @@ import Head from "next/head";
 import Link from "next/link";
 import type { NextPage } from "next";
 import SideBar from "../../components/SideBar";
+import ThoughtCard from "../../components/ThoughtCard";
 import { trpc } from "../../utils/trpc";
 import { useRouter } from "next/router";
 
@@ -37,12 +38,16 @@ const thoughtPage: NextPage = () => {
         <SideBar />
         <div className="flex flex-row items-center justify-center min-h-screen w-full p-4 gap-9">
           {thought.data ? (
-            <div className="flex flex-col w-2/4 gap-4 bg-slate-50 p-24 rounded-lg">
+            <div className="flex flex-col w-2/4 gap-4 bg-slate-50 p-24">
               <div className="flex flex-row gap-4 items-center">
-                <img
-                  className="rounded-full w-16 h-16"
-                  src={thought.data?.user.image as string}
-                />
+                <Link href={"/user/" + thought.data?.user.id}>
+                  <a>
+                    <img
+                      className="rounded-full w-16 h-16 hover:border-2"
+                      src={thought.data?.user.image as string}
+                    />
+                  </a>
+                </Link>
                 <h1 className="text-xl font-semibold">
                   {thought.data.user.name} is thinking about...
                 </h1>
