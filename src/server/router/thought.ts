@@ -27,17 +27,24 @@ export const thoughtRouter = createRouter()
         where: { id: input.id },
         include: { user: true },
       });
-      if (thought?.userId !== input.userId) {
-        throw new TRPCError({
-          code: "UNAUTHORIZED",
-        });
-      } else {
-        return thought;
-      }
+      // if (thought?.userId !== input.userId) {
+      //   throw new TRPCError({
+      //     code: "UNAUTHORIZED",
+      //   });
+      // } else {
+      //   return thought;
+      // }
+      return thought;
+    },
+  })
+  .query("getAllbyUser", {
+    input: z.object({
+      userId: z.string(),
+    }),
+    async resolve({ ctx, input }) {
+      return await ctx.prisma.thought.findMany({
+        where: { userId: input.userId as string },
+        include: { user: true },
+      });
     },
   });
-// .query("getAll", {
-//   async resolve({ ctx }) {
-//     return await ctx.prisma.thought.findMany();
-//   },
-// });
