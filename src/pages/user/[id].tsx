@@ -33,7 +33,7 @@ const you = () => {
                 src={thoughts?.data?.[0]?.user?.image as string}
               />
               <h1 className="text-xl font-semibold">
-                {thoughts?.data?.[0]?.user?.name} is thinking about...
+                {thoughts?.data?.[0]?.user?.name} has been thinking about...
               </h1>
             </div>
             <div className="flex flex-col overflow-auto h-min items-center border-gray-200 border">
@@ -41,7 +41,7 @@ const you = () => {
                 ?.slice(0)
                 .reverse()
                 .map((thought) => (
-                  <ThoughtCard props={thought} />
+                  <ThoughtCard props={thought} key={thought.id} />
                 ))}
             </div>
           </div>

@@ -48,14 +48,21 @@ const thoughtPage: NextPage = () => {
                     />
                   </a>
                 </Link>
-                <h1 className="text-xl font-semibold">
-                  {thought.data.user.name} is thinking about...
-                </h1>
+                <div>
+                  <h1 className="text-xl font-semibold">
+                    {thought.data.user.name} is thinking about...
+                  </h1>
+                  <h1 className="hover:underline">
+                    <Link href={"/user/" + thought.data.userId}>
+                      <a>@{thought.data.user.username}</a>
+                    </Link>
+                  </h1>
+                </div>
               </div>
               <div className="flex flex-col py-4">
                 <h1 className="text-4xl">{thought.data?.text}</h1>
                 <p className="text-lg pt-9">
-                  {thought.data?.createdAt?.toLocaleString()}
+                  as of {thought.data?.createdAt?.toLocaleString()}
                 </p>
               </div>
             </div>

@@ -16,7 +16,7 @@ const Document: NextPage = () => {
           href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,200;1,400;1,500;1,600;1,700&display=swap"
           rel="stylesheet"
         />
-        <link rel="icon" href="https://fav.farm/😳" />
+        <link rel="icon" href="https://fav.farm/🔏" />
       </Head>
       <body className="bg-[#CDC6D8]">
         <Main />

@@ -14,6 +14,7 @@ const Home: NextPage = () => {
   const [thoughtText, setThoughtText] = useState(String);
   const [newThoughtId, setNewThoughtId] = useState(String);
   const thought = trpc.useMutation(["thought.createThought"]);
+  const username = trpc.useMutation(["user.updateUsername"]);
   const router = useRouter();
 
   const handleCreateThought = async () => {
@@ -37,41 +38,43 @@ const Home: NextPage = () => {
         <title>fuckthebirdapp</title>
       </Head>
       <Layout>
-        <div className="flex flex-col items-center justify-center min-h-screen w-full p-4 gap-9">
-          {session ? (
-            <h1 className="text-4xl">
-              {" "}
-              Hi, {session.user?.name}. How are you?{" "}
-            </h1>
-          ) : null}
-          <textarea
-            className="w-1/3 h-96 font-semibold"
-            value={thoughtText}
-            placeholder="What are you thinking about, bud?"
-            onChange={(e) => setThoughtText(e.target.value)}
-          ></textarea>
-          <button
-            className="text-white bg-blue-500 hover:bg-blue-400 p-4 rounded-md"
-            onClick={handleCreateThought}
-          >
-            Release your thought...
-          </button>
-          <div>
+        <div className="flex flex-col items-center justify-center h-screen w-full p-4 gap-9">
+          <div className="flex flex-col bg-white justify-center items-center p-24 gap-9 w-2/3 h-2/3">
             {session ? (
-              <button
-                className="text-sky-400 hover:underline"
-                onClick={() => signOut()}
-              >
-                Sign Out
-              </button>
-            ) : (
-              <button
-                className="text-sky-400 hover:underline"
-                onClick={() => signIn()}
-              >
-                Sign In
-              </button>
-            )}
+              <h1 className="text-4xl">
+                {" "}
+                Hi, {session.user?.name}. How are you?{" "}
+              </h1>
+            ) : null}
+            <textarea
+              className="h-96 font-semibold w-full bg-gray-50"
+              value={thoughtText}
+              placeholder="What are you thinking about, bud?"
+              onChange={(e) => setThoughtText(e.target.value)}
+            ></textarea>
+            <button
+              className="text-white bg-blue-500 hover:bg-blue-400 p-4 rounded-md"
+              onClick={handleCreateThought}
+            >
+              Release your thought...
+            </button>
+            <div>
+              {session ? (
+                <button
+                  className="text-sky-400 hover:underline"
+                  onClick={() => signOut()}
+                >
+                  Sign Out
+                </button>
+              ) : (
+                <button
+                  className="text-sky-400 hover:underline"
+                  onClick={() => signIn()}
+                >
+                  Sign In
+                </button>
+              )}
+            </div>
           </div>
           {newThoughtId ? (
             <h1>
