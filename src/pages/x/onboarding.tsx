@@ -3,11 +3,8 @@ import { signIn, signOut, useSession } from "next-auth/react";
 
 import Head from "next/head";
 import Layout from "../../components/Layout";
-import Link from "next/link";
 import { trpc } from "../../utils/trpc";
 import { useRouter } from "next/router";
-
-// TODO: Implement proper username taken error
 
 const you = () => {
   const router = useRouter();

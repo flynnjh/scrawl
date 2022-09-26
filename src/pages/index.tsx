@@ -5,7 +5,6 @@ import Layout from "../components/Layout";
 import Link from "next/link";
 import type { NextPage } from "next";
 import { trpc } from "../utils/trpc";
-import { useRouter } from "next/router";
 import { useState } from "react";
 
 const Home: NextPage = () => {
@@ -14,8 +13,6 @@ const Home: NextPage = () => {
   const [thoughtText, setThoughtText] = useState(String);
   const [newThoughtId, setNewThoughtId] = useState(String);
   const thought = trpc.useMutation(["thought.createThought"]);
-  const username = trpc.useMutation(["user.updateUsername"]);
-  const router = useRouter();
 
   const handleCreateThought = async () => {
     console.log(session?.user);

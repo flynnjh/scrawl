@@ -10,7 +10,6 @@ import { trpc } from "../../utils/trpc";
 import { useRouter } from "next/router";
 
 const thoughtPage: NextPage = () => {
-  // const hello = trpc.useQuery(["thought.hello", { text: "there! :3" }]);
   const { data: session } = useSession();
 
   const router = useRouter();
@@ -25,8 +24,6 @@ const thoughtPage: NextPage = () => {
       retry: false,
     }
   );
-
-  console.log(thought.error?.message);
 
   return (
     <>
