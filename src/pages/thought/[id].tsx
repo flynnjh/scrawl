@@ -28,14 +28,14 @@ const thoughtPage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>fuckthebirdapp</title>
+        <title>Scrawl</title>
       </Head>
 
       <main className="flex flex-row w-screen">
         <SideBar />
         <div className="flex flex-row items-center justify-center min-h-screen w-full p-4 gap-9">
           {thought.data ? (
-            <div className="flex flex-col w-2/4 gap-4 bg-slate-50 p-24">
+            <div className="flex flex-col w-2/4 gap-4 bg-slate-50 border-slate-300 border rounded-md p-24">
               <div className="flex flex-row gap-4 items-center">
                 <Link href={"/user/" + thought.data?.user.id}>
                   <a>

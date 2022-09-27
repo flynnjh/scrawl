@@ -16,7 +16,7 @@ const Public = () => {
   return (
     <>
       <Head>
-        <title>fuckthebirdapp</title>
+        <title>Scrawl</title>
       </Head>
 
       <div className="flex flex-col h-screen w-full md:p-4 gap-9">
