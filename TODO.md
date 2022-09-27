@@ -32,6 +32,12 @@ Profile/Timeline:
 Frontend:
 
 - [ ] Implement proper design system:
+
   - im thinking like a note taking sort of app. the sidebar could be a representation of a spiral notebook or bookmark system?
   - clean, modern but playful.
   - the whole interface should feel inviting for the user to spill their heart out, right now it feels like a corporate app.
+
+- [ ] Implement preloader for sessions:
+  - This is important becuase the overall fluidity of the app will be improved, instead of shit just popping up we'll wait for the session to finish loading.
+    - If user is authentcated: continue
+    - If not: got to signin/signup
