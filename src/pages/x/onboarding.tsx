@@ -41,9 +41,6 @@ const you = () => {
 
   return (
     <>
-      <Head>
-        <title>Scrawl</title>
-      </Head>
       <Layout>
         <div className="flex flex-col h-screen w-full md:p-4 gap-9">
           <div className="flex flex-col h-full overflow-auto justify-center items-center">

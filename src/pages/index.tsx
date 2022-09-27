@@ -31,9 +31,6 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <Head>
-        <title>Scrawl</title>
-      </Head>
       <Layout>
         <div className="flex flex-col items-center justify-center h-screen w-full">
           <div className="flex flex-col md:w-2/3 bg-base-100 md:h-4/6 h-full border-2 border-slate-300 bg-white rounded-md p-9">

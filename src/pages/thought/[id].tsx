@@ -27,10 +27,6 @@ const thoughtPage: NextPage = () => {
 
   return (
     <>
-      <Head>
-        <title>Scrawl</title>
-      </Head>
-
       <main className="flex flex-row w-screen">
         <SideBar />
         <div className="flex flex-row items-center justify-center min-h-screen w-full p-4 gap-9">

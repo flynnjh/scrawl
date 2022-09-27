@@ -15,10 +15,6 @@ const Public = () => {
 
   return (
     <>
-      <Head>
-        <title>Scrawl</title>
-      </Head>
-
       <div className="flex flex-col h-screen w-full md:p-4 gap-9">
         <div className="flex flex-col overflow-auto h-screen justify-center items-center p-24 bg-gray-200">
           <h1>

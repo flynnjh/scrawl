@@ -6,6 +6,7 @@ const Document: NextPage = () => {
   return (
     <Html>
       <Head>
+        <title>Scrawl</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
