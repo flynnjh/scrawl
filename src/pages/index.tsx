@@ -32,47 +32,50 @@ const Home: NextPage = () => {
   return (
     <>
       <Layout>
-        <div className="flex flex-col items-center justify-center h-screen w-full">
-          <div className="flex flex-col md:w-2/3 bg-base-100 md:h-4/6 h-full border-2 border-slate-300 bg-white rounded-md p-9">
-            {session ? (
-              <h1 className="text-4xl p-4">
-                {" "}
-                Hi, {session.user?.name}. How are you?{" "}
-              </h1>
-            ) : null}
-            <div className="flex w-full justify-center items-center mt-9 px-4">
-              <textarea
-                className="h-96 font-semibold w-full bg-transparent"
-                value={thoughtText}
-                placeholder="What are you thinking about, bud?"
-                onChange={(e) => setThoughtText(e.target.value)}
-              ></textarea>
+        <div className="flex flex-col h-screen w-full md:p-4 gap-9">
+          <div className="flex flex-col bg-white h-full overflow-auto">
+            <div className="flex flex-row gap-4 items-center px-24 py-12">
+              {session ? (
+                <h1 className="text-4xl">
+                  {" "}
+                  Hi, {session.user?.name}. How are you?{" "}
+                </h1>
+              ) : null}
             </div>
-            <div className="flex justify-end gap-4 w-full mt-auto pt-9 mb-9 pr-4">
-              <button
-                className="flex justify-end text-white bg-blue-500 hover:bg-blue-400 p-4 rounded-md"
-                onClick={handleCreateThought}
-              >
-                Release your thought...
-              </button>
+            <div className="flex flex-col overflow-auto h-full items-center border-gray-200 border">
+              <div className="flex flex-col h-full w-full p-16 bg-slate-300">
+                <div className="flex flex-col w-full h-full border-2 border-slate-300 rounded-lg p-9 bg-white">
+                  <textarea
+                    className="flex-1 resize-none px-0 w-full h-screen text-gray-800 bg-white text-2xl"
+                    value={thoughtText}
+                    placeholder="What are you thinking about, bud?"
+                    onChange={(e) => setThoughtText(e.target.value)}
+                  ></textarea>
+                  <div className="flex flex-none justify-end gap-4 w-full mt-auto pt-9 mb-9 pr-4">
+                    <button
+                      className="flex justify-end text-white bg-gray-500 hover:bg-gray-400 p-4 rounded-md"
+                      onClick={handleCreateThought}
+                    >
+                      Save as Draft
+                    </button>
+                    <button
+                      className="flex justify-end text-white bg-red-500 hover:bg-red-400 p-4 rounded-md"
+                      onClick={handleCreateThought}
+                    >
+                      Delete
+                    </button>
 
-              <button
-                className="flex justify-end text-white bg-blue-500 hover:bg-blue-400 p-4 rounded-md"
-                onClick={handleCreateThought}
-              >
-                Release
-              </button>
+                    <button
+                      className="flex justify-end text-white bg-blue-500 hover:bg-blue-400 p-4 rounded-md"
+                      onClick={handleCreateThought}
+                    >
+                      Release
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          {newThoughtId ? (
-            <h1>
-              Your thought is{" "}
-              <Link href={`/thought/${newThoughtId}`}>
-                <a className="text-sky-400 hover:underline">here</a>
-              </Link>
-              .
-            </h1>
-          ) : null}
         </div>
       </Layout>
     </>
