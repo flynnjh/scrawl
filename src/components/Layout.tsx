@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 
+import Head from "next/head";
 import SideBar from "../components/SideBar";
 
 interface Props {
@@ -8,10 +9,15 @@ interface Props {
 
 const Layout = ({ children, ...props }: Props) => {
   return (
-    <main className="flex flex-row w-screen">
-      <SideBar />
-      {children}
-    </main>
+    <>
+      <Head>
+        <title>Scrawl</title>
+      </Head>
+      <main className="flex flex-row w-screen h-screen">
+        <SideBar />
+        {children}
+      </main>
+    </>
   );
 };
 
