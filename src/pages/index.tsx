@@ -34,46 +34,43 @@ const Home: NextPage = () => {
   return (
     <>
       <Layout>
-        <div className="flex flex-col h-screen w-full md:p-4 gap-9 bg-blue-gray-50/70">
-          <div className="flex flex-col bg-white h-full overflow-auto border-blue-gray-50 border">
-            <div className="flex flex-row gap-4 items-center px-24 py-12">
-              {session ? (
-                <h1 className="text-4xl">
-                  {" "}
-                  Hi, {session.user?.name}. How are you?{" "}
-                </h1>
-              ) : null}
-            </div>
-            <div className="flex flex-col overflow-auto h-full items-center border-blue-gray-50 border">
-              <div className="flex flex-col h-full w-full p-16 bg-blue-gray-50">
-                <div className="flex flex-col w-full h-full border-2 border-slate-300 rounded-lg p-9 bg-white">
-                  <textarea
-                    className="flex-1 resize-none px-0 w-full h-screen text-gray-800 bg-white text-2xl"
-                    value={thoughtText}
-                    placeholder="What are you thinking about, bud?"
-                    onChange={(e) => setThoughtText(e.target.value)}
-                  ></textarea>
-                  <div className="flex flex-none justify-end gap-4 w-full mt-auto pt-9 mb-9 pr-4">
-                    <Button
-                      className="flex justify-end text-white bg-gray-500 hover:bg-gray-400 p-4 rounded-md"
-                      onClick={handleCreateThought}
-                    >
-                      Save as Draft
-                    </Button>
-                    <Button
-                      className="flex justify-end text-white bg-red-500 hover:bg-red-400 p-4 rounded-md"
-                      onClick={handleCreateThought}
-                    >
-                      Delete
-                    </Button>
+        <div className="flex flex-col bg-white h-full overflow-auto">
+          <div className="flex flex-row gap-4 items-center px-24 py-12">
+            <h1 className="text-4xl">
+              {" "}
+              Hi, {session?.user?.name}. How are you?{" "}
+            </h1>
+          </div>
+          <div className="flex flex-col overflow-auto h-full items-center border-blue-gray-50 border">
+            <div className="flex flex-col h-full w-full p-16 bg-blue-gray-50">
+              <div className="flex flex-col w-full h-full border-2 border-slate-300 rounded-lg p-9 bg-white">
+                <textarea
+                  className="flex-1 resize-none px-0 w-full h-screen text-gray-800 bg-white text-2xl"
+                  value={thoughtText}
+                  placeholder="What are you thinking about, bud?"
+                  onChange={(e) => setThoughtText(e.target.value)}
+                ></textarea>
+                {/* TODO: These buttons are causing layout issues on mobile, replace with dropdown on mobile. */}
+                <div className="flex flex-none justify-end gap-4 w-full mt-auto pt-9 mb-9 pr-4">
+                  {/* <Button
+                    className="flex justify-end text-white bg-gray-500 hover:bg-gray-400 p-4 rounded-md"
+                    onClick={handleCreateThought}
+                  >
+                    Save as Draft
+                  </Button>
+                  <Button
+                    className="flex justify-end text-white bg-red-500 hover:bg-red-400 p-4 rounded-md"
+                    onClick={handleCreateThought}
+                  >
+                    Delete
+                  </Button> */}
 
-                    <Button
-                      className="flex justify-end text-white bg-blue-500 hover:bg-blue-400 p-4 rounded-md"
-                      onClick={handleCreateThought}
-                    >
-                      Release
-                    </Button>
-                  </div>
+                  <Button
+                    className="flex justify-end text-white bg-blue-500 hover:bg-blue-400 p-4 rounded-md"
+                    onClick={handleCreateThought}
+                  >
+                    Release
+                  </Button>
                 </div>
               </div>
             </div>

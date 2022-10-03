@@ -15,7 +15,9 @@ const Layout = ({ children, ...props }: Props) => {
       </Head>
       <main className="flex flex-row w-screen h-screen">
         <SideBar />
-        {children}
+        <div className="flex flex-col h-screen w-full md:p-4 md:gap-9">
+          {children}
+        </div>
       </main>
     </>
   );

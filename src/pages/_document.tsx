@@ -18,7 +18,7 @@ const Document: NextPage = () => {
         />
         <link rel="icon" href="https://fav.farm/🔏" />
       </Head>
-      <body className="bg-slate-200">
+      <body className="bg-blue-gray-50/70">
         <Main />
         <NextScript />
       </body>
