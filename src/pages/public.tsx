@@ -13,20 +13,14 @@ const Public = () => {
     router.push("/");
   }
 
+  // This will be replaced soon.
+
   return (
-    <>
-      <div className="flex flex-col h-screen w-full md:p-4 gap-9">
-        <div className="flex flex-col overflow-auto h-screen justify-center items-center p-24 bg-gray-200">
-          <h1>
-            Not signed in. Sign in{" "}
-            <Link href="/api/auth/signin">
-              <a className="hover:underline text-sky-400">here</a>
-            </Link>
-            .
-          </h1>
-        </div>
-      </div>
-    </>
+    <div className="flex flex-col overflow-auto h-screen justify-center items-center p-2">
+      <Link href="/api/auth/signin">
+        <a className="hover:underline text-blue-400 text-4xl">Sign In</a>
+      </Link>
+    </div>
   );
 };
 

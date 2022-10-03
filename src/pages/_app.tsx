@@ -1,11 +1,9 @@
 import "../styles/globals.css";
 
-import type { AppProps } from "next/app";
 import type { AppRouter } from "../server/router";
 import type { AppType } from "next/dist/shared/lib/utils";
 import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "@material-tailwind/react";
-// src/pages/_app.tsx
 import { httpBatchLink } from "@trpc/client/links/httpBatchLink";
 import { loggerLink } from "@trpc/client/links/loggerLink";
 import superjson from "superjson";

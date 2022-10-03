@@ -1,13 +1,9 @@
-import { signIn, signOut, useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
-
-import Head from "next/head";
 import Layout from "../../components/layout/Layout";
 import Link from "next/link";
 import type { NextPage } from "next";
-import ThoughtCard from "../../components/ThoughtCard";
 import { trpc } from "../../utils/trpc";
 import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
 
 const thoughtPage: NextPage = () => {
   const { data: session } = useSession();
