@@ -1,8 +1,6 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 
-import Head from "next/head";
 import Layout from "../../components/layout/Layout";
-import Link from "next/link";
 import React from "react";
 import ThoughtCard from "../../components/ThoughtCard";
 import { trpc } from "../../utils/trpc";
@@ -23,12 +21,12 @@ const you = () => {
     <>
       <Layout>
         <div className="flex flex-col bg-white h-full overflow-auto">
-          <div className="flex flex-row gap-4 items-center px-24 py-12">
+          <div className="flex md:flex-row flex-col gap-4 items-center px-24 py-12">
             <img
               className="rounded-full w-16 h-16"
               src={thoughts?.data?.[0]?.user?.image as string}
             />
-            <h1 className="text-xl font-semibold">
+            <h1 className="text-xl font-semibold text-center md:text-left">
               {thoughts?.data?.[0]?.user?.name} has been thinking about...
             </h1>
           </div>
