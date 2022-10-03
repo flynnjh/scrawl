@@ -16,7 +16,7 @@ interface Props {
 
 const SButton = ({ children, ...props }: Props) => {
   return (
-    <Link href={"/" + props.link}>
+    <Link href={"" + props.link}>
       <div className="flex lg:flex-row flex-col w-full py-6 cursor-pointer hover:bg-gray-600">
         <div className="flex lg:flex-row flex-col lg:justify-start justify-center lg:pl-8 lg:h-10 items-center w-full">
           {children}
@@ -47,17 +47,17 @@ const SideBar = () => {
           <a className="text-black lg:pl-4 md:text-xl">Bookmarks</a>
         </SButton>
         {session ? (
-          <button className="mt-auto" onClick={() => signOut()}>
-            <SButton>
+          <div className="mt-auto">
+            <SButton link={"/api/auth/signout?csrf=true"}>
               <MdOutlineExitToApp className="w-12 h-12" />
               <a className="text-black lg:pl-4 md:text-xl">Sign Out</a>
             </SButton>
-          </button>
+          </div>
         ) : null}
         {status === "loading" ? (
-          <div className="flex justify-center w-full py-12 border-slate-500/60 border cursor-pointer hover:bg-gray-600">
+          <SButton>
             <a className="text-black">Loading...</a>
-          </div>
+          </SButton>
         ) : null}
       </div>
     </div>
