@@ -27,10 +27,10 @@ const thoughtPage: NextPage = () => {
 
   return (
     <Layout>
-      <main className="flex flex-row w-screen">
-        <div className="flex flex-row items-center justify-center min-h-screen w-full p-4 gap-9">
+      <main className="flex flex-col bg-white h-full">
+        <div className="flex flex-row items-center justify-center h-full w-full p-4 gap-9">
           {thought.data ? (
-            <div className="flex flex-col w-2/4 gap-4 bg-slate-50 border-slate-300 border rounded-md p-24">
+            <div className="flex flex-col w-full gap-4 rounded-md p-24">
               <div className="flex flex-row gap-4 items-center">
                 <Link href={"/user/" + thought.data?.user.id}>
                   <a>
@@ -42,12 +42,7 @@ const thoughtPage: NextPage = () => {
                 </Link>
                 <div>
                   <h1 className="text-xl font-semibold">
-                    {thought.data.user.name} is thinking about...
-                  </h1>
-                  <h1 className="hover:underline">
-                    <Link href={"/user/" + thought.data.userId}>
-                      <a>@{thought.data.user.username}</a>
-                    </Link>
+                    {thought.data.user.name} was thinking about...
                   </h1>
                 </div>
               </div>
