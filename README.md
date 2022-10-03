@@ -1,5 +1,15 @@
 TODO:
 
+Sidebar:
+
+- [ ] Improve responsiveness
+
+  - Should be small bar on half Macbook screen size
+
+- [ ] Improve color scheme
+
+  - Black should be a ligher grey
+
 Home/Thought Creation:
 
 - [ ] Move index to /home, redesign it because it's shit.
