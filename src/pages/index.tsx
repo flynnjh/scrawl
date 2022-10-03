@@ -51,20 +51,23 @@ const Home: NextPage = () => {
                   onChange={(e) => setThoughtText(e.target.value)}
                 ></textarea>
                 {/* TODO: These buttons are causing layout issues on mobile, replace with dropdown on mobile. */}
-                <div className="flex flex-none justify-end gap-4 w-full mt-auto pt-9 mb-9 pr-4">
-                  {/* <Button
-                    className="flex justify-end text-white bg-gray-500 hover:bg-gray-400 p-4 rounded-md"
-                    onClick={handleCreateThought}
+                <div className="flex justify-end gap-4 w-full mt-auto pt-9 mb-9 pr-4">
+                  <Button
+                    className="hidden md:flex justify-end text-white bg-gray-500 hover:bg-gray-400 p-4 rounded-md"
+                    onClick={() => {
+                      alert("this button does nothing! :3");
+                    }}
                   >
                     Save as Draft
                   </Button>
                   <Button
-                    className="flex justify-end text-white bg-red-500 hover:bg-red-400 p-4 rounded-md"
-                    onClick={handleCreateThought}
+                    className="hidden md:flex justify-end text-white bg-red-500 hover:bg-red-400 p-4 rounded-md"
+                    onClick={() => {
+                      alert("this button does nothing! :3");
+                    }}
                   >
                     Delete
-                  </Button> */}
-
+                  </Button>
                   <Button
                     className="flex justify-end text-white bg-blue-500 hover:bg-blue-400 p-4 rounded-md"
                     onClick={handleCreateThought}

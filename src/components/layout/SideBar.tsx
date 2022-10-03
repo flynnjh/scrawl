@@ -24,11 +24,7 @@ const SButton = ({ children, ...props }: Props) => {
 };
 
 const SideBar = () => {
-  const router = useRouter();
   const { data: session, status } = useSession();
-  if (status === "unauthenticated") {
-    router.push("/public");
-  }
   return (
     <div className="flex flex-col w-28 lg:w-96 md:w-64 overflow-auto h-screen shadow-md">
       <div className="flex justify-center items-center py-16">
