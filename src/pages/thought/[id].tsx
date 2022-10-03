@@ -2,9 +2,9 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
 import Head from "next/head";
+import Layout from "../../components/layout/Layout";
 import Link from "next/link";
 import type { NextPage } from "next";
-import SideBar from "../../components/SideBar";
 import ThoughtCard from "../../components/ThoughtCard";
 import { trpc } from "../../utils/trpc";
 import { useRouter } from "next/router";
@@ -26,9 +26,8 @@ const thoughtPage: NextPage = () => {
   );
 
   return (
-    <>
+    <Layout>
       <main className="flex flex-row w-screen">
-        <SideBar />
         <div className="flex flex-row items-center justify-center min-h-screen w-full p-4 gap-9">
           {thought.data ? (
             <div className="flex flex-col w-2/4 gap-4 bg-slate-50 border-slate-300 border rounded-md p-24">
@@ -71,7 +70,7 @@ const thoughtPage: NextPage = () => {
           ) : null}
         </div>
       </main>
-    </>
+    </Layout>
   );
 };
 
