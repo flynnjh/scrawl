@@ -1,10 +1,9 @@
 import "../styles/globals.css";
 
-import type { AppProps } from "next/app";
 import type { AppRouter } from "../server/router";
 import type { AppType } from "next/dist/shared/lib/utils";
 import { SessionProvider } from "next-auth/react";
-// src/pages/_app.tsx
+import { ThemeProvider } from "@material-tailwind/react";
 import { httpBatchLink } from "@trpc/client/links/httpBatchLink";
 import { loggerLink } from "@trpc/client/links/loggerLink";
 import superjson from "superjson";
@@ -15,9 +14,11 @@ const MyApp: AppType = ({
   pageProps: { session, ...pageProps },
 }) => {
   return (
-    <SessionProvider session={session}>
-      <Component {...pageProps} />
-    </SessionProvider>
+    <ThemeProvider>
+      <SessionProvider session={session}>
+        <Component {...pageProps} />
+      </SessionProvider>
+    </ThemeProvider>
   );
 };
 

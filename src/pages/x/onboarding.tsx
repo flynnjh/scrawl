@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 import Head from "next/head";
-import Layout from "../../components/Layout";
+import Layout from "../../components/layout/Layout";
 import { trpc } from "../../utils/trpc";
 import { useRouter } from "next/router";
 
@@ -41,9 +41,6 @@ const you = () => {
 
   return (
     <>
-      <Head>
-        <title>fuckthebirdapp</title>
-      </Head>
       <Layout>
         <div className="flex flex-col h-screen w-full md:p-4 gap-9">
           <div className="flex flex-col h-full overflow-auto justify-center items-center">

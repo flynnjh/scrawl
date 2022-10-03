@@ -1,13 +1,9 @@
-import { signIn, signOut, useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
-
-import Head from "next/head";
+import Layout from "../../components/layout/Layout";
 import Link from "next/link";
 import type { NextPage } from "next";
-import SideBar from "../../components/SideBar";
-import ThoughtCard from "../../components/ThoughtCard";
 import { trpc } from "../../utils/trpc";
 import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
 
 const thoughtPage: NextPage = () => {
   const { data: session } = useSession();
@@ -26,16 +22,11 @@ const thoughtPage: NextPage = () => {
   );
 
   return (
-    <>
-      <Head>
-        <title>fuckthebirdapp</title>
-      </Head>
-
-      <main className="flex flex-row w-screen">
-        <SideBar />
-        <div className="flex flex-row items-center justify-center min-h-screen w-full p-4 gap-9">
+    <Layout>
+      <main className="flex flex-col bg-white h-full">
+        <div className="flex flex-row items-center justify-center h-full w-full p-4 gap-9">
           {thought.data ? (
-            <div className="flex flex-col w-2/4 gap-4 bg-slate-50 p-24">
+            <div className="flex flex-col w-full gap-4 rounded-md p-24">
               <div className="flex flex-row gap-4 items-center">
                 <Link href={"/user/" + thought.data?.user.id}>
                   <a>
@@ -47,12 +38,7 @@ const thoughtPage: NextPage = () => {
                 </Link>
                 <div>
                   <h1 className="text-xl font-semibold">
-                    {thought.data.user.name} is thinking about...
-                  </h1>
-                  <h1 className="hover:underline">
-                    <Link href={"/user/" + thought.data.userId}>
-                      <a>@{thought.data.user.username}</a>
-                    </Link>
+                    {thought.data.user.name} was thinking about...
                   </h1>
                 </div>
               </div>
@@ -75,7 +61,7 @@ const thoughtPage: NextPage = () => {
           ) : null}
         </div>
       </main>
-    </>
+    </Layout>
   );
 };
 
