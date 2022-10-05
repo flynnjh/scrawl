@@ -1,22 +1,18 @@
 import React, { ReactNode } from "react";
 
+import AuthContext from "../../context/AuthContext";
 import Head from "next/head";
 import SideBar from "./SideBar";
-import { useRouter } from "next/router";
-import { useSession } from "next-auth/react";
 
 interface Props {
   children?: ReactNode;
 }
 
+// FIXME: Added AuthContext to Layout for the time being, this way routes that utilise it will be protected.
+
 const Layout = ({ children, ...props }: Props) => {
-  const router = useRouter();
-  const { data: session, status } = useSession();
-  if (status === "unauthenticated") {
-    router.push("/public");
-  }
   return (
-    <>
+    <AuthContext>
       <Head>
         <title>Scrawl</title>
       </Head>
@@ -26,7 +22,7 @@ const Layout = ({ children, ...props }: Props) => {
           {children}
         </div>
       </main>
-    </>
+    </AuthContext>
   );
 };
 
