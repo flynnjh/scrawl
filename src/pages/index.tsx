@@ -1,12 +1,21 @@
+import { Menu, Transition } from "@headlessui/react";
+import React, { Fragment } from "react";
+
 import { Button } from "@material-tailwind/react";
 import Layout from "../components/layout/Layout";
 import type { NextPage } from "next";
 import { trpc } from "../utils/trpc";
+import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 
 const Home: NextPage = () => {
-  const { data: session } = useSession();
+  function classNames(...classes: any) {
+    return classes.filter(Boolean).join(" ");
+  }
+
+  const { data: session, status } = useSession();
+  const router = useRouter();
 
   const [thoughtText, setThoughtText] = useState(String);
   const [newThoughtId, setNewThoughtId] = useState(String);
