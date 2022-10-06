@@ -29,7 +29,7 @@ const SButton = ({ children, ...props }: Props) => {
 const SideBar = () => {
   const { data: session, status } = useSession();
   return (
-    <div className="flex flex-col w-28 lg:w-96 md:w-64 overflow-auto h-screen md:shadow-lg shadow-none bg-blue-50/20">
+    <div className="flex flex-col w-28 lg:w-96 md:w-64 overflow-auto h-screen md:shadow-lg shadow-none bg-gray-50">
       <div className="flex justify-center items-center py-16">
         <h1 className="text-black md:text-6xl text-4xl">🔏</h1>
       </div>
