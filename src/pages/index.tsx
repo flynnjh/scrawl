@@ -1,7 +1,7 @@
+import { Alert, Button } from "@material-tailwind/react";
 import { Menu, Transition } from "@headlessui/react";
 import React, { Fragment } from "react";
 
-import { Button } from "@material-tailwind/react";
 import Layout from "../components/layout/Layout";
 import type { NextPage } from "next";
 import { trpc } from "../utils/trpc";
@@ -19,6 +19,7 @@ const Home: NextPage = () => {
 
   const [thoughtText, setThoughtText] = useState(String);
   const [newThoughtId, setNewThoughtId] = useState(String);
+  const [newThoughtAlert, setNewThoughtAlert] = useState(Boolean);
   const thought = trpc.useMutation(["thought.createThought"]);
 
   const handleCreateThought = async () => {
@@ -33,6 +34,10 @@ const Home: NextPage = () => {
     });
     if (newThought.id) {
       setNewThoughtId(newThought.id);
+      setNewThoughtAlert(true);
+      setTimeout(() => {
+        setNewThoughtAlert(false);
+      }, 3000);
     }
     setThoughtText("");
   };
@@ -42,6 +47,13 @@ const Home: NextPage = () => {
       <Layout>
         {/* Save shadow and color variables in a separate document to start forming a style guide */}
         <div className="flex flex-col bg-white h-full overflow-auto rounded-lg md:shadow-lg shadow-none shadow-blue-gray-100">
+          <Alert
+            show={newThoughtAlert}
+            variant="gradient"
+            className="absolute left-0 right-0 ml-auto mr-9 mt-4 w-1/5 rounded-md shadow-lg"
+          >
+            Your thought has been released.
+          </Alert>
           <div className="flex gap-4 items-center px-24 py-12 md:shadow-md shadow-none shadow-blue-gray-100">
             {/* Color this shadow more effectively */}
             <h1 className="text-4xl">
