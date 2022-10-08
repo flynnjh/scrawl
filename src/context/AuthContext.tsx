@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 
+import ClipLoader from "react-spinners/ClipLoader";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 
@@ -16,13 +17,17 @@ const AuthContext = ({ children, ...props }: Props) => {
 
   if (status === "unauthenticated") {
     router.push("/public");
-    return <div className="bg-blue-gray-50/70"></div>;
+    return (
+      <div className="flex h-screen w-full justify-center items-center text-2xl bg-blue-gray-50/70">
+        <ClipLoader color="#42A5F5" size={50} />
+      </div>
+    );
   }
 
   if (status === "loading") {
     return (
       <div className="flex h-screen w-full justify-center items-center text-2xl bg-blue-gray-50/70">
-        Loading...
+        <ClipLoader color="#42A5F5" size={50} />
       </div>
     );
   }

@@ -47,7 +47,7 @@ Frontend:
   - clean, modern but playful.
   - the whole interface should feel inviting for the user to spill their heart out, right now it feels like a corporate app.
 
-- [ ] Implement preloader for sessions:
+- [x] Implement preloader for sessions:
   - This is important becuase the overall fluidity of the app will be improved, instead of shit just popping up we'll wait for the session to finish loading.
     - If user is authentcated: continue
-    - If not: got to signin/signup
+    - If not: got to signin/signup (this will be done when I, well, implement signing up)
