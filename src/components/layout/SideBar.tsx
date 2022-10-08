@@ -1,12 +1,8 @@
-import {
-  MdBookmark,
-  MdHome,
-  MdOutlineExitToApp,
-  MdPerson,
-} from "react-icons/md";
+import { FiBook, FiBookmark, FiHome, FiUser } from "react-icons/fi";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 import Link from "next/link";
+import { MdOutlineExitToApp } from "react-icons/md";
 import { ReactNode } from "react";
 
 interface Props {
@@ -35,22 +31,22 @@ const SideBar = () => {
       </div>
       <div className="flex flex-col h-full">
         <SButton link={"/"}>
-          <MdHome className="w-12 h-12" />
-          <a className="text-black lg:pl-4 md:text-xl">Home</a>
+          <FiHome className="w-8 h-8" />
+          <a className="text-black lg:pl-4 md:text-xl text-sm">Home</a>
         </SButton>
         <SButton link={"/user/" + session?.user?.id}>
-          <MdPerson className="w-12 h-12" />
-          <a className="text-black lg:pl-4 md:text-xl">Timeline</a>
+          <FiUser className="w-8 h-8" />
+          <a className="text-black lg:pl-4 md:text-xl text-sm">Timeline</a>
         </SButton>
-        <SButton link={"/404"}>
-          <MdBookmark className="w-12 h-12 rounded-full" />
-          <a className="text-black lg:pl-4 md:text-xl">Bookmarks</a>
+        <SButton link={"/"}>
+          <FiBookmark className="w-8 h-8" />
+          <a className="text-black lg:pl-4 md:text-xl text-sm">Bookmarks</a>
         </SButton>
         {session ? (
           <div className="mt-auto">
             <SButton link={"/api/auth/signout?csrf=true"}>
-              <MdOutlineExitToApp className="w-12 h-12" />
-              <a className="text-black lg:pl-4 md:text-xl">Sign Out</a>
+              <MdOutlineExitToApp className="w-8 h-8" />
+              <a className="text-black lg:pl-4 md:text-xl text-sm">Sign Out</a>
             </SButton>
           </div>
         ) : null}
