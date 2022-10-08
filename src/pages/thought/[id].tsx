@@ -21,6 +21,8 @@ const thoughtPage: NextPage = () => {
     }
   );
 
+  // TODO: fix avatar being squashed
+
   return (
     <Layout>
       <main className="flex flex-col bg-white h-full">

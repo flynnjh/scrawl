@@ -20,7 +20,7 @@ const you = () => {
   return (
     <>
       <Layout>
-        <div className="flex flex-col bg-white h-full overflow-auto rounded-lg md:shadow-lg shadow-none shadow-blue-gray-100">
+        <div className="flex flex-col bg-white h-full overflow-auto rounded-lg md:shadow-lg shadow-blue-gray-100">
           <div className="flex md:flex-row flex-col gap-4 items-center px-24 py-12 shadow-md shadow-blue-gray-100">
             <img
               className="rounded-full w-16 h-16"
@@ -35,7 +35,10 @@ const you = () => {
               ?.slice(0)
               .reverse()
               .map((thought) => (
-                <div className="flex w-full md:py-1 justify-center items-center">
+                <div
+                  className="flex w-full md:py-1 justify-center items-center"
+                  key={thought.id}
+                >
                   <ThoughtCard props={thought} key={thought.id} />
                 </div>
               ))}
