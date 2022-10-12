@@ -1,12 +1,16 @@
+import { Alert, Button } from "@material-tailwind/react";
+
 import Layout from "../../components/layout/Layout";
 import Link from "next/link";
 import type { NextPage } from "next";
 import { trpc } from "../../utils/trpc";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
+import { useState } from "react";
 
 const thoughtPage: NextPage = () => {
   const { data: session } = useSession();
+  const [deletedThoughtAlert, setDeletedThoughtAlert] = useState(Boolean);
 
   const router = useRouter();
 
@@ -21,11 +25,40 @@ const thoughtPage: NextPage = () => {
     }
   );
 
+  const deleteThought = trpc.useMutation(["thought.delete"]);
+
+  const handleDeleteThought = async (thought: any) => {
+    const deletedThought = await deleteThought
+      .mutateAsync({
+        id: thought.data.id,
+        userId: session?.user?.id as string,
+      })
+      .catch((err) => {
+        // TODO: display proper error message, though delete button should only be shown to the original poster.
+        alert(err);
+      });
+
+    if (deletedThought) {
+      setDeletedThoughtAlert(true);
+      setTimeout(() => {
+        setDeletedThoughtAlert(false);
+      }, 3000);
+    }
+    return;
+  };
+
   // TODO: fix avatar being squashed
 
   return (
     <Layout>
       <main className="flex flex-col bg-white h-full">
+        <Alert
+          show={deletedThoughtAlert}
+          variant="gradient"
+          className="absolute left-0 right-0 md:ml-auto md:mr-9 md:mt-4 md:w-1/5 w-3/4 mt-4 ml-auto mr-auto shadow-lg"
+        >
+          Your thought has been deleted.
+        </Alert>
         <div className="flex flex-row items-center justify-center h-full w-full p-4 gap-9">
           {thought.data ? (
             <div className="flex flex-col w-full gap-4 rounded-md p-24">
@@ -49,6 +82,17 @@ const thoughtPage: NextPage = () => {
                 <p className="text-lg pt-9">
                   as of {thought.data?.createdAt?.toLocaleString()}
                 </p>
+                {/* This is only temporary to test delete functionality */}
+                {thought.data.userId == session?.user?.id ? (
+                  <Button
+                    variant="gradient"
+                    onClick={() => {
+                      handleDeleteThought(thought);
+                    }}
+                  >
+                    Delete
+                  </Button>
+                ) : null}
               </div>
             </div>
           ) : null}
@@ -60,6 +104,9 @@ const thoughtPage: NextPage = () => {
                 limited its visibility.
               </h1>
             </div>
+          ) : null}
+          {!thought.isFetching && !thought.data ? (
+            <h1>thought not found :(</h1>
           ) : null}
         </div>
       </main>
