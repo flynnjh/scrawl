@@ -13,8 +13,8 @@ interface Props {
 const SButton = ({ children, ...props }: Props) => {
   return (
     <Link href={"" + props.link}>
-      <div className="flex lg:flex-row flex-col w-full py-6 cursor-pointer hover:bg-gray-600">
-        <div className="flex lg:flex-row flex-col lg:justify-start justify-center lg:pl-8 lg:h-10 items-center w-full">
+      <div className="flex xl:flex-row flex-col w-full py-6 cursor-pointer hover:bg-gray-600">
+        <div className="flex xl:flex-row flex-col lg:justify-start justify-center xl:pl-8 xl:h-10 items-center w-full">
           {children}
         </div>
       </div>
@@ -25,28 +25,28 @@ const SButton = ({ children, ...props }: Props) => {
 const SideBar = () => {
   const { data: session, status } = useSession();
   return (
-    <div className="flex flex-col w-28 lg:w-96 md:w-64 overflow-auto h-screen md:shadow-lg shadow-none bg-gray-50">
+    <div className="flex flex-col w-28 xl:w-96 md:w-32 overflow-auto h-screen md:shadow-lg shadow-none bg-gray-50">
       <div className="flex justify-center items-center py-16">
-        <h1 className="text-black md:text-6xl text-4xl">🔏</h1>
+        <h1 className="text-black xl:text-7xl text-5xl">🔏</h1>
       </div>
       <div className="flex flex-col h-full">
         <SButton link={"/"}>
           <FiHome className="w-8 h-8" />
-          <a className="text-black lg:pl-4 md:text-xl text-sm">Home</a>
+          <a className="text-black xl:pl-4 xl:text-xl text-sm">Home</a>
         </SButton>
         <SButton link={"/user/" + session?.user?.id}>
           <FiUser className="w-8 h-8" />
-          <a className="text-black lg:pl-4 md:text-xl text-sm">Timeline</a>
+          <a className="text-black xl:pl-4 xl:text-xl text-sm">Timeline</a>
         </SButton>
         <SButton link={"/"}>
           <FiBookmark className="w-8 h-8" />
-          <a className="text-black lg:pl-4 md:text-xl text-sm">Bookmarks</a>
+          <a className="text-black xl:pl-4 xl:text-xl text-sm">Bookmarks</a>
         </SButton>
         {session ? (
           <div className="mt-auto">
             <SButton link={"/api/auth/signout?csrf=true"}>
               <MdOutlineExitToApp className="w-8 h-8" />
-              <a className="text-black lg:pl-4 md:text-xl text-sm">Sign Out</a>
+              <a className="text-black xl:pl-4 xl:text-xl text-sm">Sign Out</a>
             </SButton>
           </div>
         ) : null}
