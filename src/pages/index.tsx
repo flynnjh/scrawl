@@ -20,7 +20,7 @@ const Home: NextPage = () => {
   const [thoughtText, setThoughtText] = useState(String);
   const [newThoughtId, setNewThoughtId] = useState(String);
   const [newThoughtAlert, setNewThoughtAlert] = useState(Boolean);
-  const thought = trpc.useMutation(["thought.createThought"]);
+  const thought = trpc.useMutation(["thought.create"]);
 
   const handleCreateThought = async () => {
     console.log(session?.user);
@@ -50,7 +50,7 @@ const Home: NextPage = () => {
           <Alert
             show={newThoughtAlert}
             variant="gradient"
-            className="absolute left-0 right-0 ml-auto mr-9 mt-4 w-1/5 rounded-md shadow-lg"
+            className="absolute left-0 right-0 md:ml-auto md:mr-9 md:mt-4 md:w-1/5 w-3/4 mt-4 ml-auto mr-auto shadow-lg"
           >
             Your thought has been released.
           </Alert>
