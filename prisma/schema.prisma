@@ -38,15 +38,16 @@ model Session {
 }
 
 model User {
-    id            String    @id @default(cuid())
+    id            String     @id @default(cuid())
     name          String?
-    username      String?   @unique
-    email         String?   @unique
+    username      String?    @unique
+    email         String?    @unique
     emailVerified DateTime?
     image         String?
     accounts      Account[]
     sessions      Session[]
     thought       thought[]
+    bookmarks     bookmark[]
 }
 
 model VerificationToken {
@@ -61,7 +62,16 @@ model thought {
     id        String   @id @default(uuid())
     createdAt DateTime @default(now())
 
-    text   String @db.VarChar(2000)
-    user   User   @relation(fields: [userId], references: [id])
-    userId String
+    text     String     @db.VarChar(2000)
+    user     User       @relation(fields: [userId], references: [id])
+    userId   String
+    bookmark bookmark[]
+}
+
+model bookmark {
+    id        String  @id @default(uuid())
+    thought   thought @relation(fields: [thoughtId], references: [id])
+    User      User    @relation(fields: [userId], references: [id])
+    userId    String
+    thoughtId String
 }
