@@ -38,7 +38,7 @@ const SideBar = () => {
           <FiUser className="w-8 h-8" />
           <a className="text-black xl:pl-4 xl:text-xl text-sm">Timeline</a>
         </SButton>
-        <SButton link={"/"}>
+        <SButton link={"/bookmarks"}>
           <FiBookmark className="w-8 h-8" />
           <a className="text-black xl:pl-4 xl:text-xl text-sm">Bookmarks</a>
         </SButton>

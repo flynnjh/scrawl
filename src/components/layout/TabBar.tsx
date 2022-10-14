@@ -36,7 +36,7 @@ const TabBar = () => {
         <SButton link={"/user/" + session?.user?.id}>
           <FiUser className="w-8 h-8" />
         </SButton>
-        <SButton link={"/"}>
+        <SButton link={"/bookmarks"}>
           <FiBookmark className="w-8 h-8" />
         </SButton>
         {session ? (
