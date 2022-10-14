@@ -1,9 +1,9 @@
 import { Alert, Button } from "@material-tailwind/react";
 import React, { Fragment } from "react";
 
+import DropdownMenu from "../components/DropdownMenu";
 import Layout from "../components/layout/Layout";
 import Link from "next/link";
-import { Menu } from "@headlessui/react";
 import type { NextPage } from "next";
 import { trpc } from "../utils/trpc";
 import { useRouter } from "next/router";
@@ -45,7 +45,7 @@ const Home: NextPage = () => {
     <>
       <Layout>
         {/* Save shadow and color variables in a separate document to start forming a style guide */}
-        <div className="flex flex-col bg-white h-full overflow-auto rounded-lg md:shadow-lg shadow-none shadow-blue-gray-100">
+        <div className="flex flex-col bg-white h-full w-full overflow-auto rounded-lg md:shadow-lg shadow-none shadow-blue-gray-100">
           <Alert
             show={newThoughtAlert}
             variant="gradient"
@@ -63,8 +63,8 @@ const Home: NextPage = () => {
               Hi, {session?.user?.name}. How are you?
             </h1>
           </div>
-          <div className="flex flex-col overflow-auto h-full items-center border-blue-gray-50 border">
-            <div className="flex flex-col w-full h-full border-2 border-slate-300 rounded-lg p-9">
+          <div className="flex flex-col overflow-auto h-full items-center bg-[#fbfbfc] border-blue-gray-50 border">
+            <div className="flex flex-col w-full h-full rounded-lg p-9">
               <textarea
                 className="flex-1 resize-none px-0 w-full h-screen text-gray-800 bg-transparent text-2xl"
                 value={thoughtText}
@@ -72,6 +72,7 @@ const Home: NextPage = () => {
                 onChange={(e) => setThoughtText(e.target.value)}
               ></textarea>
               <div className="flex justify-end gap-4 w-full mt-4 pr-4">
+                {/* <DropdownMenu /> */}
                 {/* <Menu as="div" className="relative inline-block text-left">
                   <Menu.Button>
                     <Button

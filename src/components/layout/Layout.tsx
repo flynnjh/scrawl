@@ -19,12 +19,22 @@ const Layout = ({ children, ...props }: Props) => {
       <Head>
         <title>Scrawl</title>
       </Head>
-      <main className="flex flex-row w-screen h-screen">
-        {!isMobile ? <SideBar /> : null}
-        <div className="flex flex-col h-screen w-full md:p-4 md:gap-9">
+      <main className="flex w-screen h-screen">
+        {!isMobile ? (
+          <div className="flex flex-row h-screen w-full md:p-4 md:gap-9">
+            <SideBar />
+            {children}
+          </div>
+        ) : (
+          <div className="flex flex-col h-screen w-screen">
+            {children}
+            <TabBar />
+          </div>
+        )}
+        {/* <div className="flex flex-col h-screen w-full md:p-4 md:gap-9">
           {children}
           {isMobile ? <TabBar /> : null}
-        </div>
+        </div> */}
       </main>
     </AuthContext>
   );

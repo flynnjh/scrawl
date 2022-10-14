@@ -47,11 +47,13 @@ const thoughtPage: NextPage = () => {
     return;
   };
 
+  const bookmark = trpc.useMutation(["bookmark.create"]);
+
   // TODO: fix avatar being squashed
 
   return (
     <Layout>
-      <main className="flex flex-col bg-white h-full">
+      <main className="flex flex-col bg-white h-full w-full rounded-md md:shadow-lg shadow-none shadow-blue-gray-100">
         <Alert
           show={deletedThoughtAlert}
           variant="gradient"
@@ -91,6 +93,20 @@ const thoughtPage: NextPage = () => {
                     }}
                   >
                     Delete
+                  </Button>
+                ) : null}
+                {thought.data.userId == session?.user?.id ? (
+                  <Button
+                    variant="gradient"
+                    color={"light-blue"}
+                    onClick={() => {
+                      const newBookmark = bookmark.mutateAsync({
+                        userId: session.user?.id as string,
+                        thoughtId: thoughtId,
+                      });
+                    }}
+                  >
+                    Bookmark
                   </Button>
                 ) : null}
               </div>
