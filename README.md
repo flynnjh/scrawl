@@ -2,17 +2,19 @@ TODO:
 
 Sidebar:
 
-- [ ] Improve responsiveness
+- [x] Improve responsiveness
 
   - Should be small bar on half Macbook screen size
+    - Added TabBar and improve the styling of the sidebar
 
-- [ ] Improve color scheme
+- [x] Improve color scheme (always wip)
 
   - Black should be a ligher grey
 
 Home/Thought Creation:
 
-- [ ] Move index to /home, redesign it because it's shit.
+- [x] Move index to /home 
+- [ ] Redesign it because it's shit (wip).
 
 About:
 
@@ -37,11 +39,11 @@ Thought Card:
 
 Profile/Timeline:
 
-- [ ] Add bookmarks of certain thoughts. Only the user's own thoughts though.
+- [x] Add bookmarks of certain thoughts. Only the user's own thoughts though.
 
 Frontend:
 
-- [ ] Implement proper design system:
+- [x] Implement proper design system:
 
   - im thinking like a note taking sort of app. the sidebar could be a representation of a spiral notebook or bookmark system?
   - clean, modern but playful.
