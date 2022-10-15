@@ -38,10 +38,20 @@ const ThoughtCard = ({ thought, ...props }: Props) => {
               </h1>
             </div>
           ) : null}
-          <h1 className="text-4xl text-center md:text-left text-clip">
+          <h1
+            className={
+              "text-4xl text-clip" +
+              (props.expanded ? "text-center md:text-left" : "")
+            }
+          >
             {thought.text}
           </h1>
-          <p className="text-lg pt-9 text-center md:text-left">
+          <p
+            className={
+              "text-lg text-clip pt-9" +
+              (props.expanded ? " text-center md:text-left" : "")
+            }
+          >
             {props.expanded ? "@" : null} {thought.createdAt.toLocaleString()}
           </p>
         </a>
