@@ -5,7 +5,7 @@ import { z } from "zod";
 export const thoughtRouter = createRouter()
   .mutation("create", {
     input: z.object({
-      text: z.string(),
+      text: z.string().min(1),
       userId: z.string(),
     }),
     async resolve({ ctx, input }) {
@@ -48,7 +48,7 @@ export const thoughtRouter = createRouter()
     async resolve({ ctx, input }) {
       const thought = await ctx.prisma.thought.findUnique({
         where: { id: input.id },
-        include: { user: true },
+        include: { user: true, bookmark: true },
       });
       // if (thought?.userId !== input.userId) {
       //   throw new TRPCError({
