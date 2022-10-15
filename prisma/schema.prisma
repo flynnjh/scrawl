@@ -70,7 +70,7 @@ model thought {
 
 model bookmark {
     id        String  @id @default(uuid())
-    thought   thought @relation(fields: [thoughtId], references: [id])
+    thought   thought @relation(fields: [thoughtId], references: [id], onDelete: Cascade)
     User      User    @relation(fields: [userId], references: [id])
     userId    String
     thoughtId String
