@@ -57,7 +57,7 @@ const Home: NextPage = () => {
             </Link>{" "}
             has been released.
           </Alert>
-          <div className="flex gap-4 md:px-24 px-24 py-12 md:shadow-md shadow-none shadow-blue-gray-100 z-10">
+          <div className="flex gap-4 md:px-24 px-24 py-12 shadow-md shadow-blue-gray-100 z-10">
             {/* Color this shadow more effectively */}
             <h1 className="text-4xl text-left">
               Hi, {session?.user?.name}. How are you?

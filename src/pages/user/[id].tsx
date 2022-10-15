@@ -21,7 +21,7 @@ const you = () => {
     <>
       <Layout>
         <div className="flex flex-col bg-gray-50 h-full w-full overflow-auto rounded-lg md:shadow-lg shadow-blue-gray-100">
-          <div className="flex md:flex-row flex-col gap-4 items-center z-10 px-24 py-12 md:shadow-md">
+          <div className="flex md:flex-row flex-col gap-4 items-center z-10 px-24 py-12 shadow-md">
             <img
               className="rounded-full w-16 h-16"
               src={thoughts?.data?.[0]?.user?.image as string}

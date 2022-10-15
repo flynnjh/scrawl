@@ -1,5 +1,6 @@
 import { Alert, Button } from "@material-tailwind/react";
 
+import { ClipLoader } from "react-spinners";
 import Layout from "../../components/layout/Layout";
 import Link from "next/link";
 import type { NextPage } from "next";
@@ -36,7 +37,6 @@ const thoughtPage: NextPage = () => {
         userId: session?.user?.id as string,
       })
       .catch((err) => {
-        // TODO: display proper error message, though delete button should only be shown to the original poster.
         alert(err);
       });
 
@@ -50,8 +50,6 @@ const thoughtPage: NextPage = () => {
   };
 
   const bookmark = trpc.useMutation(["bookmark.create"]);
-
-  // TODO: fix avatar being squashed
 
   return (
     <Layout>
@@ -124,7 +122,9 @@ const thoughtPage: NextPage = () => {
               </div>
             </div>
           ) : null} */}
-          {thought.isFetching ? <h1>Loading...</h1> : null}
+          {thought.isFetching && !thought.data ? (
+            <ClipLoader color="#42A5F5" size={50} />
+          ) : null}
           {thought.error?.message === "UNAUTHORIZED" ? (
             <div className="flex flex-col w-2/4 h-2/3 gap-4 bg-slate-50 p-24 rounded-lg">
               <h1 className="flex justify-center text-2xl font-semibold text-center">
