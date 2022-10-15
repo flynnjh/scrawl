@@ -8,10 +8,7 @@ interface Props {
   children?: ReactNode;
 }
 
-// TODO: Add the ability to protect certain routes
-// TODO: Actually passdown session to children
-
-const AuthContext = ({ children, ...props }: Props) => {
+const RouteContext = ({ children, ...props }: Props) => {
   const { data: session, status } = useSession();
   const router = useRouter();
 
@@ -34,4 +31,4 @@ const AuthContext = ({ children, ...props }: Props) => {
   return <>{children}</>;
 };
 
-export default AuthContext;
+export default RouteContext;
