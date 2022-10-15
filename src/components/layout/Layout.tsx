@@ -21,7 +21,7 @@ const Layout = ({ children, ...props }: Props) => {
       </Head>
       <main className="flex w-screen h-screen">
         {!isMobile ? (
-          <div className="flex flex-row h-screen w-full md:p-4 md:gap-9">
+          <div className="flex flex-row h-screen w-full md:p-4 md:gap-9 2xl:ml-24 2xl:mr-24">
             <SideBar />
             {children}
           </div>
@@ -31,10 +31,6 @@ const Layout = ({ children, ...props }: Props) => {
             <TabBar />
           </div>
         )}
-        {/* <div className="flex flex-col h-screen w-full md:p-4 md:gap-9">
-          {children}
-          {isMobile ? <TabBar /> : null}
-        </div> */}
       </main>
     </AuthContext>
   );
