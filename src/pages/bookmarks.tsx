@@ -20,7 +20,7 @@ const Bookmarks: NextPage = () => {
   return (
     <Layout>
       <div className="flex flex-col bg-gray-50 h-full w-full overflow-auto rounded-lg md:shadow-lg shadow-blue-gray-100">
-        <div className="flex md:flex-row flex-col gap-4 items-center px-24 py-12 shadow-md shadow-blue-gray-100 backdrop-blur-none">
+        <div className="flex md:flex-row flex-col gap-4 items-center px-24 py-12 shadow-md shadow-blue-gray-100 z-10">
           {/* <img
             className="rounded-full w-16 h-16"
             src={session?.user?.image as string}
@@ -36,7 +36,7 @@ const Bookmarks: NextPage = () => {
                 className="flex w-full md:py-1 justify-center items-center"
                 key={bookmark.id}
               >
-                <ThoughtCard props={bookmark.thought} key={bookmark.id} />
+                <ThoughtCard thought={bookmark.thought} key={bookmark.id} />
               </div>
             ))}
         </div>

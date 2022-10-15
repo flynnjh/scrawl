@@ -3,6 +3,8 @@ import { Alert, Button } from "@material-tailwind/react";
 import Layout from "../../components/layout/Layout";
 import Link from "next/link";
 import type { NextPage } from "next";
+import ThoughtCard from "../../components/ThoughtCard";
+import { thought } from "@prisma/client";
 import { trpc } from "../../utils/trpc";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
@@ -63,6 +65,13 @@ const thoughtPage: NextPage = () => {
         </Alert>
         <div className="flex flex-row items-center justify-center h-full w-full p-4 gap-9">
           {thought.data ? (
+            <ThoughtCard
+              thought={thought.data as thought}
+              key={thought.data?.id as string}
+              expanded
+            />
+          ) : null}
+          {/* {thought.data ? (
             <div className="flex flex-col w-full gap-4 rounded-md p-24">
               <div className="flex flex-row gap-4 items-center">
                 <Link href={"/user/" + thought.data?.user.id}>
@@ -87,7 +96,6 @@ const thoughtPage: NextPage = () => {
                 {thought.data?.bookmark?.length ? (
                   <p className="text-lg">Bookmarked.</p>
                 ) : null}
-                {/* This is only temporary to test delete functionality */}
                 {thought.data.userId == session?.user?.id ? (
                   <Button
                     variant="gradient"
@@ -115,7 +123,7 @@ const thoughtPage: NextPage = () => {
                 ) : null}
               </div>
             </div>
-          ) : null}
+          ) : null} */}
           {thought.isFetching ? <h1>Loading...</h1> : null}
           {thought.error?.message === "UNAUTHORIZED" ? (
             <div className="flex flex-col w-2/4 h-2/3 gap-4 bg-slate-50 p-24 rounded-lg">

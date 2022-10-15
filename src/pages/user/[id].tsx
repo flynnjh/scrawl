@@ -21,11 +21,11 @@ const you = () => {
     <>
       <Layout>
         <div className="flex flex-col bg-gray-50 h-full w-full overflow-auto rounded-lg md:shadow-lg shadow-blue-gray-100">
-          <div className="flex md:flex-row flex-col gap-4 items-center px-24 py-12 md:shadow-md backdrop-blur-none shadow-blue-gray-100">
-            {/* <img
+          <div className="flex md:flex-row flex-col gap-4 items-center z-10 px-24 py-12 md:shadow-md">
+            <img
               className="rounded-full w-16 h-16"
               src={thoughts?.data?.[0]?.user?.image as string}
-            /> */}
+            />
             <h1 className="text-4xl text-center md:text-left">
               {thoughts?.data?.[0]?.user?.name} has been thinking about...
             </h1>
@@ -39,7 +39,7 @@ const you = () => {
                   className="flex w-full md:py-1 justify-center items-center"
                   key={thought.id}
                 >
-                  <ThoughtCard props={thought} key={thought.id} />
+                  <ThoughtCard thought={thought} key={thought.id} />
                 </div>
               ))}
           </div>

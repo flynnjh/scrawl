@@ -67,7 +67,7 @@ export const thoughtRouter = createRouter()
     async resolve({ ctx, input }) {
       return await ctx.prisma.thought.findMany({
         where: { userId: input.userId as string },
-        include: { user: true },
+        include: { user: true, bookmark: true },
       });
     },
   });
