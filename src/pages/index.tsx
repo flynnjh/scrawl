@@ -1,6 +1,5 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 
-import AuthContext from "../context/AuthContext";
 import { ClipLoader } from "react-spinners";
 import Head from "next/head";
 import Link from "next/link";
