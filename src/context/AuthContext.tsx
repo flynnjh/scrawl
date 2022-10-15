@@ -16,7 +16,7 @@ const AuthContext = ({ children, ...props }: Props) => {
   const router = useRouter();
 
   if (status === "unauthenticated") {
-    router.push("/public");
+    router.push("/");
     return (
       <div className="flex h-screen w-full justify-center items-center text-2xl bg-blue-gray-50/70">
         <ClipLoader color="#42A5F5" size={50} />

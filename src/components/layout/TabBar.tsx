@@ -30,7 +30,7 @@ const TabBar = () => {
         <h1 className="text-black md:text-6xl text-4xl">🔏</h1>
       </div>
       <div className="flex flex-row ml-auto gap-9 h-full">
-        <SButton link={"/"}>
+        <SButton link={"/home"}>
           <FiHome className="w-8 h-8" />
         </SButton>
         <SButton link={"/user/" + session?.user?.id}>

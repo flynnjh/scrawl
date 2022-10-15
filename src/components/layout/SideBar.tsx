@@ -30,7 +30,7 @@ const SideBar = () => {
         <h1 className="text-black xl:text-7xl text-5xl">🔏</h1>
       </div>
       <div className="flex flex-col h-full">
-        <SButton link={"/"}>
+        <SButton link={"/home"}>
           <FiHome className="w-8 h-8" />
           <a className="text-black xl:pl-4 xl:text-xl text-sm">Home</a>
         </SButton>
