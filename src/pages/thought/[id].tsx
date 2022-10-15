@@ -53,7 +53,7 @@ const thoughtPage: NextPage = () => {
 
   return (
     <Layout>
-      <main className="flex flex-col bg-white h-full w-full rounded-md md:shadow-lg shadow-none shadow-blue-gray-100">
+      <main className="flex flex-col bg-[#fbfbfc] h-full w-full rounded-md md:shadow-lg shadow-none shadow-blue-gray-100">
         <Alert
           show={deletedThoughtAlert}
           variant="gradient"
@@ -84,6 +84,9 @@ const thoughtPage: NextPage = () => {
                 <p className="text-lg pt-9">
                   as of {thought.data?.createdAt?.toLocaleString()}
                 </p>
+                {thought.data?.bookmark?.length ? (
+                  <p className="text-lg">Bookmarked.</p>
+                ) : null}
                 {/* This is only temporary to test delete functionality */}
                 {thought.data.userId == session?.user?.id ? (
                   <Button
@@ -95,12 +98,13 @@ const thoughtPage: NextPage = () => {
                     Delete
                   </Button>
                 ) : null}
-                {thought.data.userId == session?.user?.id ? (
+                {thought.data.userId == session?.user?.id &&
+                !thought.data?.bookmark?.length ? (
                   <Button
                     variant="gradient"
                     color={"light-blue"}
                     onClick={() => {
-                      const newBookmark = bookmark.mutateAsync({
+                      bookmark.mutateAsync({
                         userId: session.user?.id as string,
                         thoughtId: thoughtId,
                       });

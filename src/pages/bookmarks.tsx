@@ -19,13 +19,13 @@ const Bookmarks: NextPage = () => {
 
   return (
     <Layout>
-      <div className="flex flex-col bg-white h-full w-full overflow-auto rounded-lg md:shadow-lg shadow-blue-gray-100">
-        <div className="flex md:flex-row flex-col gap-4 items-center px-24 py-12 shadow-md shadow-blue-gray-100">
-          <img
+      <div className="flex flex-col bg-gray-50 h-full w-full overflow-auto rounded-lg md:shadow-lg shadow-blue-gray-100">
+        <div className="flex md:flex-row flex-col gap-4 items-center px-24 py-12 shadow-md shadow-blue-gray-100 backdrop-blur-none">
+          {/* <img
             className="rounded-full w-16 h-16"
             src={session?.user?.image as string}
-          />
-          <h1 className="text-3xl text-center md:text-left">Bookmarks</h1>
+          /> */}
+          <h1 className="text-4xl text-center md:text-left">Bookmarks</h1>
         </div>
         <div className="flex flex-col overflow-auto h-full items-center border-gray-200 border bg-blue-gray-50">
           {bookmarks?.data
