@@ -12,7 +12,8 @@ Sidebar:
 
 Home/Thought Creation:
 
-- [ ] Move index to /home, redesign it because it's shit.
+- [x] Move index to /home 
+- [ ] Redesign it because it's shit (wip).
 
 About:
 
