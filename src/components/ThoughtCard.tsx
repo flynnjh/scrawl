@@ -1,13 +1,14 @@
-import React, { ReactNode } from "react";
+import { User, thought } from "@prisma/client";
 
 import Link from "next/link";
-import { thought } from "@prisma/client";
+import React from "react";
 import { useSession } from "next-auth/react";
 
 interface Props {
   thought: thought;
-  key: String;
-  expanded?: Boolean;
+  user?: User;
+  key: string;
+  expanded?: boolean;
 }
 
 const ThoughtCard = ({ thought, ...props }: Props) => {
@@ -31,21 +32,21 @@ const ThoughtCard = ({ thought, ...props }: Props) => {
             <div className="flex md:flex-row flex-col gap-4 items-center pb-6">
               <img
                 className="rounded-full w-16 h-16"
-                src={session?.user?.image as string}
+                src={props?.user?.image as string}
               />
               <h1 className="text-2xl text-center md:text-left">
-                {session?.user?.name} was thinking about...
+                {props.user?.name} was thinking about...
               </h1>
             </div>
           ) : null}
-          <h1
+          <p
             className={
-              "text-4xl text-clip" +
+              "text-4xl text-clip break-words whitespace-pre-line " +
               (props.expanded ? "text-center md:text-left" : "")
             }
           >
             {thought.text}
-          </h1>
+          </p>
           <p
             className={
               "text-lg text-clip pt-9" +
