@@ -67,6 +67,9 @@ const Home: NextPage = () => {
                 placeholder="What are you thinking about, bud?"
                 onChange={(e) => setThoughtText(e.target.value)}
               ></textarea>
+              {/* {thoughtText ? (
+                <p className="text-xl">{thoughtText.length}/2000</p>
+              ) : null} */}
               <div className="flex justify-end gap-4 w-full mt-4 pr-4">
                 <Menu as="div" className="relative inline-block text-left">
                   <Menu.Button>
@@ -133,12 +136,13 @@ const Home: NextPage = () => {
                   variant="gradient"
                   className="flex justify-end text-white bg-blue-500 hover:bg-blue-400 p-4 rounded-md"
                   onClick={handleCreateThought}
+                  disabled={thoughtText.length <= 0}
                 >
                   Release
                 </Button>
               </div>
             </div>
-          </div>
+          </main>
         </div>
       </Layout>
     </>
