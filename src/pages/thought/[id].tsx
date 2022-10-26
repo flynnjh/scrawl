@@ -1,11 +1,11 @@
 import { Alert, Button } from "@material-tailwind/react";
+import { User, thought } from "@prisma/client";
 
 import { ClipLoader } from "react-spinners";
 import Layout from "../../components/layout/Layout";
 import Link from "next/link";
 import type { NextPage } from "next";
 import ThoughtCard from "../../components/ThoughtCard";
-import { thought } from "@prisma/client";
 import { trpc } from "../../utils/trpc";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
