@@ -57,71 +57,49 @@ const thoughtPage: NextPage = () => {
         <Alert
           show={deletedThoughtAlert}
           variant="gradient"
-          className="absolute left-0 right-0 md:ml-auto md:mr-9 md:mt-4 md:w-1/5 w-3/4 mt-4 ml-auto mr-auto shadow-lg"
+          className="absolute left-0 right-0 md:ml-auto md:mr-9 md:mt-4 md:w-1/5 w-3/4 mt-4 ml-auto mr-auto shadow-lg z-20"
         >
           Your thought has been deleted.
         </Alert>
-        <div className="flex flex-row items-center justify-center h-full w-full p-4 gap-9">
+        <div className="flex flex-col h-min w-full p-4 gap-9 overflow-auto">
+          <div className="flex justify-end gap-4 w-full mt-4 pr-4">
+            {thought?.data?.userId == session?.user?.id ? (
+              <Button
+                variant="gradient"
+                onClick={() => {
+                  handleDeleteThought(thought);
+                }}
+              >
+                Delete
+              </Button>
+            ) : null}{" "}
+            {thought?.data?.userId == session?.user?.id &&
+            !thought.data?.bookmark?.length ? (
+              <Button
+                variant="gradient"
+                color={"light-blue"}
+                onClick={() => {
+                  bookmark.mutateAsync({
+                    userId: session?.user?.id as string,
+                    thoughtId: thoughtId,
+                  });
+                }}
+              >
+                Bookmark
+              </Button>
+            ) : thought?.data?.userId == session?.user?.id &&
+              thought.data?.bookmark?.length ? (
+              <Button>Bookmarked.</Button>
+            ) : null}
+          </div>
           {thought.data ? (
             <ThoughtCard
               thought={thought.data as thought}
+              user={thought.data.user as User}
               key={thought.data?.id as string}
               expanded
             />
           ) : null}
-          {/* {thought.data ? (
-            <div className="flex flex-col w-full gap-4 rounded-md p-24">
-              <div className="flex flex-row gap-4 items-center">
-                <Link href={"/user/" + thought.data?.user.id}>
-                  <a>
-                    <img
-                      className="rounded-full w-16 h-16 hover:border-2"
-                      src={thought.data?.user.image as string}
-                    />
-                  </a>
-                </Link>
-                <div>
-                  <h1 className="text-xl font-semibold">
-                    {thought.data.user.name} was thinking about...
-                  </h1>
-                </div>
-              </div>
-              <div className="flex flex-col py-4">
-                <h1 className="text-4xl">{thought.data?.text}</h1>
-                <p className="text-lg pt-9">
-                  as of {thought.data?.createdAt?.toLocaleString()}
-                </p>
-                {thought.data?.bookmark?.length ? (
-                  <p className="text-lg">Bookmarked.</p>
-                ) : null}
-                {thought.data.userId == session?.user?.id ? (
-                  <Button
-                    variant="gradient"
-                    onClick={() => {
-                      handleDeleteThought(thought);
-                    }}
-                  >
-                    Delete
-                  </Button>
-                ) : null}
-                {thought.data.userId == session?.user?.id &&
-                !thought.data?.bookmark?.length ? (
-                  <Button
-                    variant="gradient"
-                    color={"light-blue"}
-                    onClick={() => {
-                      bookmark.mutateAsync({
-                        userId: session.user?.id as string,
-                        thoughtId: thoughtId,
-                      });
-                    }}
-                  >
-                    Bookmark
-                  </Button>
-                ) : null}
-              </div>
-            </div>
-          ) : null} */}
           {thought.isFetching && !thought.data ? (
             <ClipLoader color="#42A5F5" size={50} />
           ) : null}

@@ -44,26 +44,22 @@ const Home: NextPage = () => {
   return (
     <>
       <Layout>
-        {/* Save shadow and color variables in a separate document to start forming a style guide */}
         <div className="flex flex-col bg-gray-50 h-full w-full overflow-auto rounded-lg md:shadow-lg shadow-none shadow-blue-gray-100">
-          <Alert
-            show={newThoughtAlert}
-            variant="gradient"
-            className="absolute left-0 right-0 md:ml-auto md:mr-9 md:mt-4 md:w-1/5 w-3/4 mt-4 ml-auto mr-auto shadow-lg"
-          >
-            Your{" "}
-            <Link href={"/thought/" + newThoughtId}>
-              <a className="hover:underline">thought</a>
-            </Link>{" "}
-            has been released.
-          </Alert>
+          <Link href={"/thought/" + newThoughtId}>
+            <Alert
+              show={newThoughtAlert}
+              variant="gradient"
+              className="absolute left-0 right-0 md:ml-auto md:mr-9 md:mt-4 md:w-1/5 w-3/4 mt-4 ml-auto mr-auto shadow-lg z-20 hover:cursor-pointer"
+            >
+              Your thought has been released.
+            </Alert>
+          </Link>{" "}
           <div className="flex gap-4 md:px-24 px-24 py-12 shadow-md shadow-blue-gray-100 z-10">
-            {/* Color this shadow more effectively */}
             <h1 className="text-4xl text-left">
               Hi, {session?.user?.name}. How are you?
             </h1>
           </div>
-          <div className="flex flex-col overflow-auto h-full items-center bg-[#fbfbfc] border-blue-gray-50 border">
+          <main className="flex flex-col overflow-auto h-full items-center bg-[#fbfbfc] border-blue-gray-50 border">
             <div className="flex flex-col w-full h-full rounded-lg p-9">
               <textarea
                 className="flex-1 resize-none px-0 w-full h-screen text-gray-800 bg-transparent text-2xl"
