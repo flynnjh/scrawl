@@ -51,6 +51,7 @@ const thoughtPage: NextPage = () => {
   };
 
   const bookmark = trpc.useMutation(["bookmark.create"]);
+  const removebookmark = trpc.useMutation(["bookmark.delete"]);
 
   return (
     <Layout>
@@ -69,7 +70,7 @@ const thoughtPage: NextPage = () => {
                 >
                   Delete
                 </Button>
-
+                {/* TODO: update these functions to make use of the Alert component */}
                 {thought?.data?.userId == session?.user?.id &&
                 !thought.data?.bookmark?.length ? (
                   <Button
@@ -85,7 +86,17 @@ const thoughtPage: NextPage = () => {
                   </Button>
                 ) : thought?.data?.userId == session?.user?.id &&
                   thought.data?.bookmark?.length ? (
-                  <Button>Bookmarked.</Button>
+                  <Button
+                    variant="gradient"
+                    onClick={() => {
+                      removebookmark.mutateAsync({
+                        userId: session?.user?.id as string,
+                        bookmarkId: thought.data?.bookmark[0]?.id as string,
+                      });
+                    }}
+                  >
+                    Un-Bookmark
+                  </Button>
                 ) : null}
               </div>
             ) : null}{" "}
