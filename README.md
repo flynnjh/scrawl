@@ -13,7 +13,7 @@ Sidebar:
 
 Home/Thought Creation:
 
-- [x] Move index to /home 
+- [x] Move index to /home
 - [ ] Redesign it because it's shit (wip).
 
 About:
@@ -53,3 +53,12 @@ Frontend:
   - This is important becuase the overall fluidity of the app will be improved, instead of shit just popping up we'll wait for the session to finish loading.
     - If user is authentcated: continue
     - If not: got to signin/signup (this will be done when I, well, implement signing up)
+
+Planned Features:
+
+- Search thoughts by day/week/month/etc.
+- See a list of thoughts under the one you have clicked on from that same day.
+- Replace most buttons with text with a proper icons.
+- Ability to save thoughts as a draft to come back to later.
+- Ability to give thoughts an (option) tite/header.
+- Ability to create thoughts with Markdown.
