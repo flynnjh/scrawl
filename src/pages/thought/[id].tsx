@@ -63,6 +63,7 @@ const thoughtPage: NextPage = () => {
               <div className="flex justify-end gap-4 w-full pr-4 pb-4 border-b-2">
                 <Button
                   variant="gradient"
+                  className="flex justify-end text-white bg-blue-500 hover:bg-blue-400 p-4 rounded-md"
                   color={"blue-gray"}
                   onClick={() => {
                     handleDeleteThought(thought);
@@ -75,6 +76,7 @@ const thoughtPage: NextPage = () => {
                 !thought.data?.bookmark?.length ? (
                   <Button
                     variant="gradient"
+                    className="flex justify-end text-white bg-blue-500 hover:bg-blue-400 p-4 rounded-md"
                     onClick={() => {
                       bookmark.mutateAsync({
                         userId: session?.user?.id as string,
@@ -88,6 +90,7 @@ const thoughtPage: NextPage = () => {
                   thought.data?.bookmark?.length ? (
                   <Button
                     variant="gradient"
+                    className="flex justify-end text-white bg-blue-500 hover:bg-blue-400 p-4 rounded-md"
                     onClick={() => {
                       removebookmark.mutateAsync({
                         userId: session?.user?.id as string,

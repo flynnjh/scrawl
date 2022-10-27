@@ -17,7 +17,7 @@ const ThoughtCard = ({ thought, ...props }: Props) => {
     <div
       className={
         "flex flex-col w-full md:py-9 py-4 px-9 md:px-24 bg-[#fbfbfc] border-gray-300 md:border-none hover:bg-gray-200 md:rounded-md rounded-none" +
-        (props.expanded ? "" : " border-b-2 md:w-4/5")
+        (props.expanded ? "" : " border-b-2 md:w-11/12")
       }
     >
       <Link
