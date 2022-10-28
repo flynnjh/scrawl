@@ -104,7 +104,7 @@ const Settings = () => {
                   </p>
                   <textarea
                     placeholder="Enter your name here..."
-                    className="flex-1 resize-none px-0 w-full h-screen text-gray-800 bg-gray-100 text-2xl rounded-md"
+                    className="flex-1 resize-none px-4 pt-5 w-full h-screen text-gray-800 bg-gray-100 text-xl rounded-md"
                     onChange={(e) => setNewName(e.target.value)}
                   ></textarea>
                   <div className="pt-8">
@@ -143,11 +143,11 @@ const Settings = () => {
         </Layout>
       ) : (
         <div className="flex flex-col h-screen w-full">
-          <div className="flex flex-col h-full items-center justify-center">
-            <h1 className="text-xl text-center">
+          <div className="flex flex-col h-full items-center md:items-start justify-center md:justify-start md:p-9">
+            <h1 className="text-lg text-center">
               Your account has been deleted.
             </h1>
-            <h1 className="text-xl text-center">Safe travels.</h1>
+            <h1 className="text-lg text-center">Safe travels.</h1>
           </div>
           <div className="flex flex-row w-full p-9 items-center">
             <p>
