@@ -6,6 +6,7 @@ import Layout from "../components/layout/Layout";
 import Link from "next/link";
 import type { NextPage } from "next";
 import { trpc } from "../utils/trpc";
+import useMediaQuery from "../hooks/useMediaQuery";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
@@ -16,7 +17,6 @@ const Home: NextPage = () => {
   }
 
   const { data: session, status } = useSession();
-  const router = useRouter();
 
   const [thoughtText, setThoughtText] = useState(String);
   const [newThoughtId, setNewThoughtId] = useState(String);
@@ -47,10 +47,9 @@ const Home: NextPage = () => {
         <Alert show={newThoughtAlert} link={"/thought/" + newThoughtId}>
           Your thought has been released.
         </Alert>
-        <header className="flex gap-4 md:px-24 px-24 py-12 shadow-md shadow-blue-gray-100 z-10">
-          <h1 className="text-4xl text-left">
-            Hi, {session?.user?.name}. How are you?
-          </h1>
+        <header className="flex md:flex-row flex-col gap-3 md:px-24 px-9 py-12 shadow-md shadow-blue-gray-100 z-10">
+          <h1 className="text-4xl md:text-left">Hi, {session?.user?.name}.</h1>
+          <h1 className="text-4xl ">How are you?</h1>
         </header>
         <main className="flex flex-col overflow-auto h-full items-center bg-[#fbfbfc] border-blue-gray-50 border">
           <div className="flex flex-col w-full h-full rounded-lg p-9">
