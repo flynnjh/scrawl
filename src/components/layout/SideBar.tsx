@@ -1,8 +1,8 @@
-import { FiBook, FiBookmark, FiHome, FiUser } from "react-icons/fi";
+import { FiBook, FiBookmark, FiHome, FiSettings, FiUser } from "react-icons/fi";
+import { MdOutlineExitToApp, MdSettings } from "react-icons/md";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 import Link from "next/link";
-import { MdOutlineExitToApp } from "react-icons/md";
 import { ReactNode } from "react";
 
 interface Props {
@@ -44,9 +44,9 @@ const SideBar = () => {
         </SButton>
         {session ? (
           <div className="mt-auto">
-            <SButton link={"/api/auth/signout?csrf=true"}>
-              <MdOutlineExitToApp className="w-8 h-8" />
-              <a className="text-black xl:pl-4 xl:text-xl text-sm">Sign Out</a>
+            <SButton link={"/x/settings"}>
+              <FiSettings className="w-8 h-8" />
+              <a className="text-black xl:pl-4 xl:text-xl text-sm">Settings</a>
             </SButton>
           </div>
         ) : null}

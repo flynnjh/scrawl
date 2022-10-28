@@ -3,21 +3,21 @@ import { createRouter } from "./context";
 import { z } from "zod";
 
 export const userRouter = createRouter()
-  .mutation("updateUsername", {
+  .mutation("updateName", {
     input: z.object({
       userId: z.string(),
-      username: z.string(),
+      name: z.string(),
     }),
     async resolve({ ctx, input }) {
-      if (!input.username) {
-        throw new Error("Username is a required field");
+      if (!input.name) {
+        throw new Error("name is a required field");
       }
       return await ctx.prisma.user.update({
         where: {
           id: input.userId,
         },
         data: {
-          username: input.username,
+          name: input.name,
         },
       });
     },
@@ -28,6 +28,16 @@ export const userRouter = createRouter()
     }),
     async resolve({ ctx, input }) {
       return await ctx.prisma.user.findUnique({
+        where: { id: input.userId },
+      });
+    },
+  })
+  .mutation("delete", {
+    input: z.object({
+      userId: z.string(),
+    }),
+    async resolve({ ctx, input }) {
+      return await ctx.prisma.user.delete({
         where: { id: input.userId },
       });
     },
