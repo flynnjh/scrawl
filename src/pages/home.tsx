@@ -58,6 +58,13 @@ const Home: NextPage = () => {
               value={thoughtText}
               placeholder="What are you thinking about, bud?"
               onChange={(e) => setThoughtText(e.target.value)}
+              onKeyDown={(e) =>
+                e.key == "Enter" && e.shiftKey
+                  ? thoughtText
+                    ? handleCreateThought()
+                    : null
+                  : null
+              }
             ></textarea>
             <div className="flex justify-end items-center gap-4 w-full mt-4 pr-4">
               <p className="text-xl text-[#D8D8D9] mr-auto">
