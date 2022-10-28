@@ -1,3 +1,5 @@
+import { DateTime, Duration } from "luxon";
+
 import { TRPCError } from "@trpc/server";
 import { createRouter } from "./context";
 import { z } from "zod";
@@ -68,6 +70,28 @@ export const thoughtRouter = createRouter()
       return await ctx.prisma.thought.findMany({
         where: { userId: input.userId as string },
         include: { user: true, bookmark: true },
+      });
+    },
+  })
+  .query("getRecentThoughts", {
+    input: z.object({
+      userId: z.string(),
+      days: z.number().default(3),
+    }),
+    async resolve({ ctx, input }) {
+      return await ctx.prisma.thought.findMany({
+        take: 6,
+        where: {
+          createdAt: {
+            lte: DateTime.now().toJSDate(),
+            gte: DateTime.now()
+              .minus(Duration.fromObject({ days: input.days }))
+              .toJSDate(),
+          },
+          userId: input.userId,
+        },
+        orderBy: { createdAt: "desc" },
+        include: { user: true },
       });
     },
   });

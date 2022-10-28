@@ -8,6 +8,7 @@ import Link from "next/link";
 import type { NextPage } from "next";
 import ThoughtCard from "../../components/ThoughtCard";
 import { trpc } from "../../utils/trpc";
+import useMediaQuery from "../../hooks/useMediaQuery";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
@@ -21,6 +22,16 @@ const thoughtPage: NextPage = () => {
   const thoughtId = router.query.id! as string;
   const thought = trpc.useQuery(
     ["thought.getById", { id: thoughtId, userId: session?.user?.id as string }],
+    {
+      refetchInterval: false,
+      refetchOnReconnect: false,
+      refetchOnWindowFocus: false,
+      retry: false,
+    }
+  );
+
+  const recentThoughts = trpc.useQuery(
+    ["thought.getRecentThoughts", { userId: thought.data?.userId as string }],
     {
       refetchInterval: false,
       refetchOnReconnect: false,
@@ -52,6 +63,8 @@ const thoughtPage: NextPage = () => {
 
   const bookmark = trpc.useMutation(["bookmark.create"]);
   const removebookmark = trpc.useMutation(["bookmark.delete"]);
+
+  const isMobile = useMediaQuery(550);
 
   return (
     <Layout>
@@ -103,14 +116,18 @@ const thoughtPage: NextPage = () => {
                 ) : null}
               </div>
             ) : null}{" "}
-            {thought.data ? (
-              <ThoughtCard
-                thought={thought.data as thought}
-                user={thought.data.user as User}
-                key={thought.data?.id as string}
-                expanded
-              />
-            ) : null}
+            <div className="flex flex-col h-full w-full justify-center items-center pb-8 border-b-2">
+              {thought.data ? (
+                <div className="w-11/12">
+                  <ThoughtCard
+                    thought={thought.data as thought}
+                    user={thought.data.user as User}
+                    key={thought.data?.id as string}
+                    expanded
+                  />
+                </div>
+              ) : null}
+            </div>
             {thought.isFetching && !thought.data ? (
               <ClipLoader color="#42A5F5" size={50} />
             ) : null}
@@ -120,6 +137,34 @@ const thoughtPage: NextPage = () => {
                   You{"'"}re unable to view this entry because the original
                   poster limited its visibility.
                 </h1>
+              </div>
+            ) : null}
+            {thought?.data?.userId == session?.user?.id && !isMobile ? (
+              <div className="flex flex-col w-full h-max bg-blue-gray-50/70 md:rounded-md justify-center items-center">
+                <h1 className="text-4xl py-12 md:w-11/12 md:text-left text-center">
+                  You've been thinking about...
+                </h1>
+                {recentThoughts.data
+                  ? recentThoughts.data
+                      .reverse()
+                      .map((t) => (
+                        <div className="flex flex-col w-full h-full justify-center items-center md:py-1">
+                          {thought.data?.id != t.id ? (
+                            <ThoughtCard thought={t} key={t.id} />
+                          ) : null}
+                        </div>
+                      ))
+                  : null}
+              </div>
+            ) : null}
+            {isMobile ? (
+              <div className="flex flex-col w-full h-full text-center py-9">
+                <p className="text-2xl">Got something on your mind?</p>
+                <Link href="/home">
+                  <a className="text-xl py-4 hover:underline text-blue-500">
+                    Back to home.
+                  </a>
+                </Link>
               </div>
             ) : null}
           </div>
