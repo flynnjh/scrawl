@@ -22,9 +22,7 @@ const ThoughtCard = ({ thought, ...props }: Props) => {
     >
       <Link
         href={
-          props.expanded
-            ? "/user/" + session?.user?.id
-            : "/thought/" + thought.id
+          props.expanded ? "/user/" + props.user?.id : "/thought/" + thought.id
         }
       >
         <a>
