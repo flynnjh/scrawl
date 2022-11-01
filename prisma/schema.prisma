@@ -68,9 +68,10 @@ model thought {
 }
 
 model bookmark {
-    id        String  @id @default(uuid())
-    thought   thought @relation(fields: [thoughtId], references: [id], onDelete: Cascade)
-    User      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+    id        String   @id @default(uuid())
+    createdAt DateTime @default(now())
+    thought   thought  @relation(fields: [thoughtId], references: [id], onDelete: Cascade)
+    User      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
     userId    String
     thoughtId String
 }
