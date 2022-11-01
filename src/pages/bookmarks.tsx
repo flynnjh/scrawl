@@ -27,17 +27,14 @@ const Bookmarks: NextPage = () => {
           </p>
         </header>
         <div className="flex flex-col overflow-auto h-full items-center border-gray-200 border bg-blue-gray-50">
-          {bookmarks?.data
-            ?.slice(0)
-            .reverse()
-            .map((bookmark) => (
-              <div
-                className="flex w-full md:py-1 justify-center items-center"
-                key={bookmark.id}
-              >
-                <ThoughtCard thought={bookmark.thought} key={bookmark.id} />
-              </div>
-            ))}
+          {bookmarks?.data?.slice(0).map((bookmark) => (
+            <div
+              className="flex w-full md:py-1 justify-center items-center"
+              key={bookmark.id}
+            >
+              <ThoughtCard thought={bookmark.thought} key={bookmark.id} />
+            </div>
+          ))}
         </div>
       </div>
     </Layout>

@@ -31,17 +31,14 @@ const you = () => {
             </h1>
           </div>
           <div className="flex flex-col overflow-auto h-full items-center border-gray-200 border bg-blue-gray-50">
-            {thoughts?.data
-              ?.slice(0)
-              .reverse()
-              .map((thought) => (
-                <div
-                  className="flex w-full md:py-1 justify-center items-center"
-                  key={thought.id}
-                >
-                  <ThoughtCard thought={thought} key={thought.id} />
-                </div>
-              ))}
+            {thoughts?.data?.slice(0).map((thought) => (
+              <div
+                className="flex w-full md:py-1 justify-center items-center"
+                key={thought.id}
+              >
+                <ThoughtCard thought={thought} key={thought.id} />
+              </div>
+            ))}
           </div>
         </div>
       </Layout>

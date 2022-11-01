@@ -78,6 +78,7 @@ export const bookmarkRouter = createRouter()
       return await ctx.prisma.bookmark.findMany({
         where: { userId: input.userId as string },
         include: { User: true, thought: true },
+        orderBy: { createdAt: "desc" },
       });
     },
   });
