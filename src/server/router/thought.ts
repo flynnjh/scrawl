@@ -70,12 +70,14 @@ export const thoughtRouter = createRouter()
       return await ctx.prisma.thought.findMany({
         where: { userId: input.userId as string },
         include: { user: true, bookmark: true },
+        orderBy: { createdAt: "desc" },
       });
     },
   })
   .query("getRecentThoughts", {
     input: z.object({
       userId: z.string(),
+      thoughtDate: z.date(),
       days: z.number().default(3),
     }),
     async resolve({ ctx, input }) {
@@ -83,8 +85,8 @@ export const thoughtRouter = createRouter()
         take: 6,
         where: {
           createdAt: {
-            lte: DateTime.now().toJSDate(),
-            gte: DateTime.now()
+            lte: input.thoughtDate,
+            gte: DateTime.fromJSDate(input.thoughtDate)
               .minus(Duration.fromObject({ days: input.days }))
               .toJSDate(),
           },

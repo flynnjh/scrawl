@@ -31,7 +31,13 @@ const thoughtPage: NextPage = () => {
   );
 
   const recentThoughts = trpc.useQuery(
-    ["thought.getRecentThoughts", { userId: thought.data?.userId as string }],
+    [
+      "thought.getRecentThoughts",
+      {
+        userId: thought.data?.userId as string,
+        thoughtDate: thought.data?.createdAt as Date,
+      },
+    ],
     {
       refetchInterval: false,
       refetchOnReconnect: false,
@@ -145,15 +151,16 @@ const thoughtPage: NextPage = () => {
                   You've been thinking about...
                 </h1>
                 {recentThoughts.data
-                  ? recentThoughts.data
-                      .reverse()
-                      .map((t) => (
-                        <div className="flex flex-col w-full h-full justify-center items-center md:py-1">
-                          {thought.data?.id != t.id ? (
-                            <ThoughtCard thought={t} key={t.id} />
-                          ) : null}
-                        </div>
-                      ))
+                  ? recentThoughts.data.reverse().map((t) => (
+                      <div
+                        className="flex flex-col w-full h-full justify-center items-center md:py-1"
+                        key={t.id}
+                      >
+                        {thought.data?.id != t.id ? (
+                          <ThoughtCard thought={t} key={t.id} />
+                        ) : null}
+                      </div>
+                    ))
                   : null}
               </div>
             ) : null}
