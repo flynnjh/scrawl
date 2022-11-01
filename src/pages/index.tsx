@@ -46,10 +46,10 @@ const Public = () => {
           <h1 className="text-2xl pb-4">Scrawl</h1>
           <p className="text-lg text-center">
             Scrawl is a safe and private space for you to store your thoughts.
-            No ads, data collections, likes or retweets.
+            No ads, data collection, likes or retweets.
           </p>
           <p className="text-lg text-center pb-8">
-            Just you and what you're thinking.
+            Just you and what you&apos;re thinking.
           </p>
           <button
             className="flex flex-row rounded-md items-center bg-black text-white px-9 py-2"

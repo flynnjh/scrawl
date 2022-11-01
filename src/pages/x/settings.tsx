@@ -68,7 +68,7 @@ const Settings = () => {
               <h1 className="text-4xl text-left">Settings</h1>
               <p className="flex w-full h-full md:text-left text-gray-600 text-lg">
                 p.s. Scrawl is open source under the MIT License. You can view
-                it's source on GitHub.
+                it&apos;s source on GitHub.
               </p>
             </header>
             <main className="flex flex-col overflow-auto h-full items-center bg-[#fbfbfc] border-blue-gray-50 border">
@@ -151,7 +151,8 @@ const Settings = () => {
           </div>
           <div className="flex flex-row w-full p-9 items-center">
             <p>
-              You can visit Scrawl's source code on GitHub or close this tab.
+              You can visit Scrawl&apos;s source code on GitHub or close this
+              tab.
             </p>
             <Link href="https://github.com/flynnjh/scrawl">
               <FiGithub className="w-12 h-12 hover:cursor-pointer ml-auto" />
