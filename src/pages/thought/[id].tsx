@@ -148,7 +148,7 @@ const thoughtPage: NextPage = () => {
             {thought?.data?.userId == session?.user?.id && !isMobile ? (
               <div className="flex flex-col w-full h-max bg-blue-gray-50/70 md:rounded-md justify-center items-center">
                 <h1 className="text-4xl py-12 md:w-11/12 md:text-left text-center">
-                  You've been thinking about...
+                  You&apos;ve been thinking about...
                 </h1>
                 {recentThoughts.data
                   ? recentThoughts.data.reverse().map((t) => (

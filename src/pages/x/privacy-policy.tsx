@@ -42,11 +42,11 @@ const PrivacyPolicy = () => {
             services. In order to use Scrawl, you accept that this identifiable
             information is stored by us. You can at any time opt-out of this
             data collection by deleting your account, options for which can by
-            found in Scrawl's settings.
+            found in Scrawl&apos;s settings.
           </p>
           <p className="text-lg text-clip whitespace-pre-line break-words pb-4">
-            We use cookies in order to provide you with Scrawl's services, this
-            only includes the ability for us to know whether or not you are
+            We use cookies in order to provide you with Scrawl&apos;s services,
+            this only includes the ability for us to know whether or not you are
             signed into Scrawl. We do not use cookies for any other purpose, and
             the cookies we do use are essential for the functionality of the
             app. By signing into Scrawl, you agree to our use of cookies.
@@ -58,7 +58,8 @@ const PrivacyPolicy = () => {
             your user account if you so wish.
           </p>
           <p className="text-lg text-clip whitespace-pre-line break-words pb-4">
-            Scrawl is an open source project. It's source code is avaliable on{" "}
+            Scrawl is an open source project. It&apos;s source code is avaliable
+            on{" "}
             <a
               className="text-blue-500 hover:underline"
               href="https://github.com/flynnjh/scrawl"
