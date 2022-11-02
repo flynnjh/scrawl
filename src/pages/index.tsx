@@ -77,16 +77,13 @@ const Public = () => {
             <Link href="https://twitter.com/distantsynths">
               <a className="text-gray-800 hover:underline ml-auto">Twitter</a>
             </Link>
-            <Link href="https://twitter.com/distantsynths">
+            <Link href="/x/privacy-policy">
               <a className="text-gray-800 hover:underline ml-4">
-                Privacy Policy (foo)
+                Privacy Policy
               </a>
             </Link>
           </div>
         </footer>
-        {/* <Link href="/api/auth/signin">
-          <a className="hover:underline text-blue-400 text-4xl">Sign In</a>
-        </Link> */}
       </div>
     );
   }
