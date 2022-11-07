@@ -15,6 +15,7 @@
 - TRPC
 - Tailwind
 - Prisma
+- NextAuth
 
 Through building this app, I've come to really appreciate type completion with Typescript. Beforehand, I thought it was just for lazy developers who could not be bothered to type `{user.info.name}` or whatever. Now, I realise how useful types are in developing your app faster and making development easier through types/interfaces you have set up to reduce complexity. Typescript has helped me retain some of my sanity, so that's got to count for something.
 
